@@ -573,7 +573,7 @@ public:
         }
         return score;
     }
-    void run() {
+    void run(vector<TimeTriggerEvents*>& timeEvents, vector<LevelTriggerEvents*>& levelEvents, vector<Events*>& randomEvents) {
         while(true) {
             string inputCommand; // 玩家指令
             displayStatus(); // 展示能操作的選項
@@ -726,6 +726,6 @@ int main() {
     
     DatingGame game;
     game.setGame();
-    game.run();
+    game.run(vector<TimeTriggerEvents*>& timeEvents, vector<LevelTriggerEvents*>& levelEvents, vector<Events*>& randomEvents);
     return 0;
 }
