@@ -367,6 +367,7 @@ public:
                     else{
                         currentMove -= 6;
                         //觸發學習事件//
+                        player.modifyStats(12, -4, 4, 10, -5);
                     }
                 }
                 else if(commandCode == 2){ // exercise
@@ -376,6 +377,7 @@ public:
                     else{
                         currentMove -= 6;
                         //觸發運動事件//
+                        player.modifyStats(0, 5, 5, 12, 15);
                     }
                 }
                 else if(commandCode == 3){ // social
@@ -385,6 +387,7 @@ public:
                     else{
                         currentMove -= 6;
                         //觸發社交事件//
+                        player.modifyStats(-4, 8, 14, 4, 0);
                     }
                 }
                 else if(commandCode == 4){ // eat
@@ -394,10 +397,15 @@ public:
                     else{
                         currentMove -= 4;
                         //觸發吃飯事件//
+                        player.modifyStats(0, 0, 2, -8, -5);
                     }
                 }
                 else if(commandCode == 5){ // sleep
                     //觸發睡覺事件//
+                    if(currentMove >= player.getFatigue())
+                        player.modifyStats(0, 0, 0, -player.getFatigue(), 0);
+                    else
+                        player.modifyStats(0, 0, 0, -currentMove, 0);
                     currentMove = 0;
                 }
                 else if(commandCode == 6){
