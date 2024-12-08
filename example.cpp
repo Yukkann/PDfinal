@@ -52,26 +52,49 @@ private:
 
 public:
     
-    Player() : academic(0), popularity(0), charm(50), stamina(0),fatigue(0), lucky(5), move(30){}
+    Player() : academic(0), popularity(0), charm(0), stamina(0),fatigue(0), lucky(5), move(30){}
     void setPlayer(const string& playerName, const int& type){
         this->playerName = playerName;
         if(type == 1){
             cout << "你大概是一個 NERD\n";
+            academic = 100;
+            stamina = 20;
+            popularity = 50;
+            charm = 10;
         }
         else if (type == 2){
             cout << "你是一個 Social Queen\n";
+            academic = 20;
+            stamina = 50;
+            popularity = 100;
+            charm = 20;
         }
         else if (type == 3){
             cout << "你是一個 陽光少女\n";
+            academic = 20;
+            stamina = 50;
+            popularity = 100;
+            charm = 20;
         }
         else if (type == 4){
             cout << "你是一個 Genius\n";
+            academic = 200;
+            stamina = 0;
+            popularity = 100;
+            charm = 50;
+            move = 60;
+            lucky = 100;
         }
         else if (type == 5){
             cout << "你是一個 Indian chill guy\n";
+            academic = 150;
+            stamina = 50;
+            popularity = 200;
+            charm = 0;
+            move = 60;
+            lucky = 100;
         }
     }
-
         // Getters and setters
     void modifyStats(int aca, int pop, int chr, int fat, int sta) {
         academic += aca;
