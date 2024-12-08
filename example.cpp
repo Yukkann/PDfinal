@@ -53,7 +53,7 @@ private:
 public:
     
     Player() : academic(0), popularity(0), charm(50), stamina(0),fatigue(0), lucky(5), move(30){}
-    setPlayer(const string& playerName, const int& type){
+    void setPlayer(const string& playerName, const int& type){
         this->playerName = playerName;
         if(type == 1){
             cout << "你大概是一個 NERD\n";
