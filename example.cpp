@@ -80,6 +80,23 @@ public:
         fatigue += fat;
         stamina += sta;
     }
+    bool successfullGuy(int score)
+    {
+        if(score == 75)
+            return true;
+        else if(score < 50)
+            return false;
+        else
+        {
+            int averageScore = academic + popularity * 2.5 + charm * 2 + stamina * 1.5 - fatigue * 2;
+
+            if(averageScore > 600)
+                return true;
+            else
+                return false;
+        }
+    }
+
     int getAcademic() const{return academic;};
     int getStamina() const{return stamina;};
     int getPopularity()const{return popularity;};    // 人緣
