@@ -352,12 +352,15 @@ public:
     }
     void run() {
         while(true) {
-            string command; // 玩家指令
+            string inputCommand; // 玩家指令
             displayStatus(); // 展示能操作的選項
             int currentMove = player.getMove(); //現在剩餘行動點等於這個玩家最高行動點上限
             while(currentMove > 0){
-                getline(cin, command);
-                if(command == "1"){ // study
+                getline(cin, inputCommand);
+
+                int commandCode = processCommand(inputCommand);
+
+                if(commandCode == 1){ // study
                     if(currentMove < 6){
                         tp.type("你的行動值不夠！");
                     }
@@ -366,7 +369,7 @@ public:
                         //觸發學習事件//
                     }
                 }
-                else if(command == "2"){ // exercise
+                else if(commandCode == 2){ // exercise
                     if(currentMove < 6){
                         tp.type("你的行動值不夠！");
                     }
@@ -375,7 +378,7 @@ public:
                         //觸發運動事件//
                     }
                 }
-                else if(command == "3"){ // social
+                else if(commandCode == 3){ // social
                     if(currentMove < 6){
                         tp.type("你的行動值不夠！");
                     }
@@ -384,7 +387,7 @@ public:
                         //觸發社交事件//
                     }
                 }
-                else if(command == "4"){ // eat
+                else if(commandCode == 4){ // eat
                     if(currentMove < 4){
                         tp.type("你的行動值不夠！");
                     }
@@ -393,18 +396,18 @@ public:
                         //觸發吃飯事件//
                     }
                 }
-                else if(command == "5"){ // sleep
+                else if(commandCode == 5){ // sleep
                     //觸發睡覺事件//
                     currentMove = 0;
                 }
-                else if(command == "Q"){
+                else if(commandCode == 6){
                     goto exit_loop; // 切到雙層迴圈外 結束遊戲
                 }
                 else{
                     tp.type("看清楚選項！請輸入一個數字後直接按下Enter");
                 }
-                processCommand(command);
-                command.clear();
+                //processCommand(command);
+                //commandCode.clear();
 
                 }
                 currentDay ++;
@@ -438,8 +441,42 @@ public:
         
     }
 
-    void processCommand(const string& cmd) {
-        // 處理玩家輸入
+    int processCommand(const string& inputCommand)
+    {
+        if(inputCommand.length() == 1)
+            return - 1;
+        char trueCommand;
+        bool Valid = false;
+        for(int i = 0; i < inputCommand.length(); i++)//
+            {
+                if(inputCommand[i] == 'Q')
+                {
+                    trueCommand = 'Q';
+                    Valid = true;
+                    break;
+                }
+                if(isdigit(inputCommand[i]))
+                {
+                    int commandDigit = inputCommand[i] - '0';
+                    if(commandDigit >= 1 && commandDigit <= 5)
+                    {
+                        trueCommand = inputCommand[i];
+                        Valid = true;
+                        break;
+                    }
+                    else
+                        continue;
+                }
+            }
+        if(Valid == false)
+            return -1;
+        else
+        {
+            if(trueCommand != 'Q')
+                return trueCommand - '0';
+            else
+                return 6;
+        }
     }
     void pause() { // press Enter to continue
     string dummy;
