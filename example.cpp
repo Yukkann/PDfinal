@@ -472,10 +472,6 @@ public:
 int main() {
     // SetConsoleOutputCP(65001)
     DatingGame game;
-    Character* characters[] = {new Character("陳愛芬"), new Character("黃梓祺"), new Character("王語崴")}; // 初始化角色列表
-    characters[0]->setAffection(50); // 閨密福利
-    characters[1]->setAffection(20); // 青梅竹馬
-    characters[2]->setAffection(0); // 最難追的
     game.setGame();
     game.run();
     return 0;
