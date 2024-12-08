@@ -72,30 +72,7 @@ public:
         }
     }
 
-    void setPlayer(int& type){
-        if(type == 1){
-            
-        }
-        else if (type == 2)
-        {
-            /* code */
-        }
-        else if (type == 3)
-        {
-            /* code */
-        }
-        else if (type == 4)
-        {
-            /* code */
-        }
-        else if (type == 5)
-        {
-            /* code */
-        }
-    }
-
-
-    // Getters and setters
+        // Getters and setters
     void modifyStats(int aca, int pop, int chr, int fat, int sta) {
         academic += aca;
         popularity += pop;
@@ -104,11 +81,13 @@ public:
         stamina += sta;
     }
     int getAcademic() const{return academic;};
+    int getStamina() const{return stamina;};
     int getPopularity()const{return popularity;};    // 人緣
     int getCharm()const{return charm;};        // 魅力
     int getFatigue()const{return fatigue;};      // 疲勞值
     string getName() const{return playerName;};
     int getMove()const{return move;};
+    int getLucky()const{return lucky;};
 };
 
 // NPC角色類別
@@ -143,12 +122,6 @@ public:
     void setAffection(int affection){this->affection = affection;};
 };
 
-// 地點類別
-class Location {
-    string name;
-    vector<string> availableCharacters;
-    vector<pair<string, function<void(Player&)>>> actions;
-};
 
 // 事件系統
 class EventSystem {
@@ -179,7 +152,7 @@ public:
 class DatingGame {
 private:
     Player player;
-    vector<Character> characters;
+    Character* characters;
     int currentDay;
     string currentLocation;
     EventSystem eventSystem;
@@ -189,10 +162,10 @@ public:
     Typewriter tp;
     DatingGame() : currentDay(1) {
         // 初始化角色
-        characters.push_back(Character("角色1"));
-        characters.push_back(Character("角色2"));
-        characters.push_back(Character("角色3"));
-
+        Character* characters[] = {new Character("陳愛芬"), new Character("黃梓祺"), new Character("王語崴")}; // 初始化角色列表
+        characters[0]->setAffection(50); // 閨密福利
+        characters[1]->setAffection(20); // 青梅竹馬
+        characters[2]->setAffection(0); // 最難追的
         // 設定隨機事件
         setupRandomEvents();
     }
@@ -295,8 +268,9 @@ public:
         checkLoveEnding(score);
     }
     int collegeTest(string level){
-        tp.type("今天是大考的日子......\n");
+        tp.type("今天是大考的日子......");
         pause();
+        tp.type("考卷：！注意！以錯誤格式輸入導致無法辨識者，計為零分。");
         int score = 0;
         int answer[3] = {};
         int solution[3]={0}; // 未完成
@@ -309,28 +283,28 @@ public:
             showTXT("final/easy_test2.txt");
             tp.type("請作答：");
             cin >> answer[1];
-            tp.type("第三題： \n (英文題)");
+            tp.type("第三題： \n (加分題)");
             showTXT("final/easy_test3.txt");
             tp.type("請作答：");
             cin >> answer[2];
 
         }
         else if(level == "hard"){
-            tp.type("第一題： \n (自然題)");
+            tp.type("第一題： \n (數學題)");
             showTXT("final/hard_test1.txt");
             tp.type("請作答：");
             cin >> answer[0];
-            tp.type("第二題： \n (數學題)");
+            tp.type("第二題： \n (常識題)");
             showTXT("final/hard_test2.txt");
             tp.type("請作答：");
             cin >> answer[1];
-            tp.type("第三題： \n (社會題)");
+            tp.type("第三題： \n (加分題)");
             showTXT("final/hard_test3.txt");
             tp.type("請作答：");
             cin >> answer[2];
         }
         else{
-            tp.type("第一題： \n (國文題)");
+            tp.type("第一題： \n (社會題)");
             showTXT("final/test1.txt");
             tp.type("請作答：");
             cin >> answer[0];
@@ -338,7 +312,7 @@ public:
             showTXT("final/test2.txt");
             tp.type("請作答：");
             cin >> answer[1];
-            tp.type("第三題： \n (自然題)");
+            tp.type("第三題： \n (加分題)");
             showTXT("final/test3.txt");
             tp.type("請作答：");
             cin >> answer[2];
@@ -418,8 +392,10 @@ public:
                 //commandCode.clear();
 
                 }
+                tp.type("剩餘行動值：");
+                cout << currentMove << "\n";
                 currentDay ++;
-                if(currentDay == 3){
+                if(currentDay == 30){
                     checkEnding();
                     break;
             }
@@ -444,7 +420,8 @@ public:
         // 現在能力 可以選的選項 1. 
         tp.setSpeed(30);
         tp.type("           <目前狀態>          \n");
-        tp.type("依據現在的能力值 你可以選擇：");
+        cout <<"學科值： "<<player.getAcademic() << " 體能： " << player.getStamina() << " 魅力: " << player.getCharm() << " 幸運: " << player.getLucky() << " 疲勞值: " << player.getFatigue()<< " 行動點數上限: "<< player.getMove() << "\n";
+        tp.type("你可以選擇做這些事情：");
         tp.type("1.study(消耗6點行動值), 2.exercise(消耗6點行動值), 3.social(消耗6點行動值), 4.eat(消耗4點行動值，減少一點點疲勞), 5.sleep(清空所有行動值，減少疲勞值)\n");
         
     }
