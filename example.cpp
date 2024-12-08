@@ -53,7 +53,7 @@ private:
 public:
     
     Player() : academic(0), popularity(0), charm(50), stamina(0),fatigue(0), lucky(5), move(30){}
-    Player(const string& playerName, const int& type){
+    setPlayer(const string& playerName, const int& type){
         this->playerName = playerName;
         if(type == 1){
             cout << "你大概是一個 NERD\n";
@@ -237,8 +237,7 @@ public:
             cout << "!" << flush; // 輸出點並立即刷新緩衝區
             SLEEP(250); // 延遲 500 毫秒; // 延遲 0.5 秒
         }
-        Player player;
-        player = Player(playerName, type);
+        player.setPlayer(playerName, type);
     }
     
     void displayEndings() {
