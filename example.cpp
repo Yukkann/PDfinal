@@ -720,6 +720,10 @@ public:
 
 int main() {
     // SetConsoleOutputCP(65001)
+    vector<Events*> randomEvents;
+    vector<TimeTriggerEvents*> timeEvents;
+    vector<LevelTriggerEvents*> levelEvents;
+    
     DatingGame game;
     game.setGame();
     game.run();
