@@ -443,7 +443,7 @@ public:
 
     int processCommand(const string& inputCommand)
     {
-        if(inputCommand.length() == 1)
+        if(inputCommand.length() != 1)
             return - 1;
         char trueCommand;
         bool Valid = false;
