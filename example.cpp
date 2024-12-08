@@ -96,12 +96,13 @@ public:
         }
     }
         // Getters and setters
-    void modifyStats(int aca, int pop, int chr, int fat, int sta) {
+    void modifyStats(int aca, int pop, int chr, int fat, int sta, int luc) {
         academic += aca;
         popularity += pop;
         charm += chr;
         fatigue += fat;
         stamina += sta;
+        lucky += luc
     }
     bool successfullGuy(int score)
     {
