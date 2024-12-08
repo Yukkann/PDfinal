@@ -282,6 +282,28 @@ public:
         // 若兩者滿100
         // 三者都滿100
         // 都未達標
+
+        void checkLoveEnding(int score){ // 確認有沒有在一起
+        // 取最高好感度的進入結局 第二者當朋友
+        // 若兩者滿100
+        // 三者都滿100
+        // 都未達標
+
+        //BE
+        if(characters[0]->getAffection() < 100 && characters[1]->getAffection() < 100 && characters[2]->getAffection() < 100)
+        {
+            tp.type("天涯何處無芳草，你的魅力只配獲得三張好人卡，很遺憾地請你回去山洞裡好好當個哥布林吧，小心不要再被冒險者騙出來了");
+        }
+        else if(characters[0]->getAffection() >= 100 && characters[1]->getAffection() >= 100 && characters[2]->getAffection() >= 100)
+        {
+            tp.type("法律限制了婚姻，卻限制不了你，你左擁著梓祺、右抱著語崴，更親切的和愛芬醬說著早安，恭喜你成功突破了世俗的限制，成為了每個人稱羨的對象，後世都稱送你為後宮王");
+        }
+        else if(characters[0]->getAffection() >= 100 && characters[1]->getAffection() >= 100 && characters[2]->getAffection() < 100)
+        {
+            tp.type("\"早上好\" \n梓其是妳眼睛睜開後第一個看到的人，妳摸了摸他的頭 \n突然 你聞到到一股香味，原來是愛芬醬在廚房煮著香噴噴的味噌湯，妳還是不敢相信你在備考的那段時間，有這麼好的兩個人陪著妳 \n")
+            tp.type("當初妳很猶豫，要選擇誰成為自己的伴侶，但你想起來自己已經不是小孩子了，當然是全都要啦，恭喜妳獲得了'兩位絕世佳人");
+        }
+    }
     }
     void checkEnding() {
         // 檢查是否達到結局條件
