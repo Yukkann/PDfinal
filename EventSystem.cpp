@@ -475,23 +475,23 @@ void setCharacEvents(){
        "你和陳愛芬剛考完數學，她拉著你說：「快！去全家買炸雞慶祝一下！」。你會選擇...?",
        "1. 點頭答應：「好啊，我也餓死了！」/2. 糾正她：「炸雞熱量太高，吃沙拉比較健康吧？」/3. 提議：「不如回家煮個泡麵慶祝？」"
    ));
-   characEvents[14]->setResultOne2(0,0,0,0,0,0,"你們大吃特吃，超級紓壓，但體重可就沒那麼好看了，不過她對你的好感度+15。");
-   characEvents[14]->setResultTwo2(0,0,0,0,0,0,"她翻白眼：「無趣！」好感度-2，但你的健康有顧到。");
-   characEvents[14]->setResultThree2(0,0,0,0,0,0,"她覺得你很有創意，你們開了一場泡麵品評會，好感度+10。");
+   characEvents[14]->setResultOne2(0,0,n,-n,n,0,"你們大吃特吃，超級紓壓，但體重可就沒那麼好看了，不過她對你的好感度+15。");
+   characEvents[14]->setResultTwo2(0,0,0,n,0,0,"她翻白眼：「無趣！」好感度-5，但你的健康有顧到。");
+   characEvents[14]->setResultThree2(0,0,2*n,0,n,n,"她覺得你很有創意，你們開了一場泡麵品評會，好感度+10。");
 
-   characEvents.push_back(new CharacterEvents(5, 20, -5
+   characEvents.push_back(new CharacterEvents(15, 15, 10
        "你在放學時看到陳愛芬看著日曆發呆，走近一問才想起今天是她的生日。她說：「其實也沒什麼特別的，就隨便過吧。」。你會選擇...?",
        "1. 提議：「怎麼可以隨便過！走，我們去吃大餐！」/2. 認真說：「生日應該好好慶祝，至少買個蛋糕吧！」/3. 開玩笑說：「要不要我送你一張考試全對的保證卡？」"
    ));
-   characEvents[15]->setResultOne2(0,0,0,0,0,0,"她愣了一下，接著開心地笑了：「那我就不客氣了！」好感度+10");
-   characEvents[15]->setResultTwo2(0,0,0,0,0,0,"她臉紅點頭：「好啊，陪我一起買吧。」好感度+8，壓力-3。");
-   characEvents[15]->setResultThree2(0,0,0,0,0,0,"她笑得趴在桌上：「要是有這種卡就好了！」好感度+5，氣氛輕鬆。");
+   characEvents[15]->setResultOne2(0,0,0,0,0,0,"她愣了一下，接著開心地笑了：「那我就不客氣了！」好感度+15");
+   characEvents[15]->setResultTwo2(0,0,0,0,0,0,"她臉紅點頭：「好啊，陪我一起買吧。」好感度+15。");
+   characEvents[15]->setResultThree2(0,0,0,0,0,0,"她笑得趴在桌上：「要是有這種卡就好了！」好感度+10，氣氛變得很歡樂。");
 
-   characEvents.push_back(new CharacterEvents(5, 20, -5
+   characEvents.push_back(new CharacterEvents(10, 15, 5
        "某次晚自習時，A突然趴在桌上，低聲說：「我好累……可不可以休息一下？」。你會選擇...?",
        "1. 靜靜地拍拍她的肩膀：「休息一下吧，我幫你顧書。」/2. 主動把肩膀借給她靠：「要不要靠一下？」/3. 調侃她：「你不是說要超越我嗎？這樣怎麼行？」"
    ));
-   characEvents[16]->setResultOne2(0,0,0,0,0,0,"她感激地笑了：「謝謝你...」好感度+8。");
+   characEvents[16]->setResultOne2(0,0,0,0,0,0,"她感激地笑了：「謝謝你...」好感度+10。");
    characEvents[16]->setResultTwo2(0,0,0,0,0,0,"她猶豫了一下，然後輕輕靠在你肩膀上，小聲說：「謝謝……真的很謝謝。」好感度+15。");
    characEvents[16]->setResultThree2(0,0,0,0,0,0,"她揮手假裝生氣：「我才不會輸給你呢！」好感度+5，你們都更有精神了！");
 
