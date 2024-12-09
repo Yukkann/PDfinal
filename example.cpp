@@ -68,49 +68,64 @@ public:
 };
 
 
-
-class TimeTriggerEvents : public Events
+class CharacterEvents : public Events
 {
 private:
-    int week;
+    int changeAffection[3];
 public:
-    TimeTriggerEvents(int week, string description, string choicesD):Events::Events(description, choicesD), week(week){};
-    bool checkWeek(int currentWeek);
+    CharacterEvents(int affecOne, int affecTwo, int affecThree, string description, string choicesD);
+    
+    int charMakeChoices(Player& p);
 };
 
-bool TimeTriggerEvents::checkWeek(int currentWeek){
-    if (this->week == currentWeek) {
-        return true;
-    }
-    return false;
-}
-
-class LevelTriggerEvents : public Events
-{
-private:
-    int threshold[7];
-    bool triggered; //有些事件trigger一次就好
-public:
-    LevelTriggerEvents(int academic, int popularity, int charm, int stamina, int fatigue, int lucky, string description, string choicesD);
-    bool checkThreshold(Player& p, int week);
-};
-
-
-LevelTriggerEvents::LevelTriggerEvents(int academic, int popularity, int charm, int stamina, int fatigue, int lucky, string description, string choicesD) :Events::Events(description, choicesD){
-    int temp[] = {academic, popularity, charm, stamina, fatigue, lucky};
-    for (int i = 0; i < 6; ++i) {
-        threshold[i] = temp[i];
+CharacterEvents::CharacterEvents(int affecOne, int affecTwo, int affecThree, string description, string choicesD) :Events::Events(description, choicesD){
+    int temp [] = {affecOne, affecTwo, affecThree};
+    for (int i=0; i<3; i++) {
+        this->changeAffection[i] = temp[i];
     }
 }
 
-bool LevelTriggerEvents::checkThreshold(Player& p, int week){ // check whether pass threshold
-    int temp[6] = {p.getAcademic(), p.getPopularity(), p.getCharm(), p.getStamina(), p.getFatigue(), p.getLucky()};
-    for (int i=0; i<6; i++) {
-        if (temp[i] < threshold[i]*week) {
-            return false;
+int CharacterEvents::charMakeChoices(Player& p){
+    cout << description << endl;
+    cout << choicesD << endl;
+    int choice = 0;
+    while(true){
+        cin >> choice;
+        if (choice == 1 || choice == 2 || choice == 3) {
+            break;
+        }
+        else{
+            cout << "是不是就叫你輸入1到3 再玩一次試試看啊";
         }
     }
-    return true;
+    
+    switch (choice) {
+        case 1:
+            cout << resultOneD1 << endl;
+            p.modifyStats(resultOneL1[0], resultOneL1[1], resultOneL1[2], resultOneL1[3], resultOneL1[4], resultOneL1[5]);
+            cout << "你的能力值增減為： " << "學科能力" << resultOneL1[0] << "，" << "人緣" << resultOneL1[1] << "，" << "魅力" << resultOneL1[2] << "，" << "體能" << resultOneL1[3] << "，" << "疲勞值" << resultOneL1[4] << "，" << "幸運" << resultOneL1[5] << "。" << endl;
+            return changeAffection[0];
+            
+            break;
+        case 2:
+            cout << resultTwoD1 << endl;
+            p.modifyStats(resultTwoL1[0], resultTwoL1[1], resultTwoL1[2], resultTwoL1[3], resultTwoL1[4], resultTwoL1[5]);
+            cout << "你的能力值增減為： " << "學科能力" << resultTwoL1[0] << "，" << "人緣" << resultTwoL1[1] << "，" << "魅力" << resultTwoL1[2] << "，" << "體能" << resultTwoL1[3] << "，" << "疲勞值" << resultTwoL1[4] << "，" << "幸運" << resultTwoL1[5] << "。" << endl;
+            return changeAffection[1];
+            
+            break;
+        case 3:
+            cout << resultThreeD1 << endl;
+            p.modifyStats(resultThreeL1[0], resultThreeL1[1], resultThreeL1[2], resultThreeL1[3], resultThreeL1[4], resultThreeL1[5]);
+            cout << "你的能力值增減為： " << "學科能力" << resultThreeL1[0] << "，" << "人緣" << resultThreeL1[1] << "，" << "魅力" << resultThreeL1[2] << "，" << "體能" << resultThreeL1[3] << "，" << "疲勞值" << resultThreeL1[4] << "，" << "幸運" << resultThreeL1[5] << "。" << endl;
+            return changeAffection[2];
+            
+            break;
+
+        default:
+            break;
+    }
+    return 0;
 }
 
 
