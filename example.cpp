@@ -342,7 +342,7 @@ public:
         }
         return score;
     }
-    void run(vector<TimeTriggerEvents*>& timeEvents, vector<LevelTriggerEvents*>& levelEvents, vector<Events*>& randomEvents) {
+    void run() {
         while(true) {
             string inputCommand; // 玩家指令
             displayStatus(); // 展示能操作的選項
@@ -560,11 +560,8 @@ public:
 };
 int main() {
     // SetConsoleOutputCP(65001)
-    vector<Events*> randomEvents;
-    vector<TimeTriggerEvents*> timeEvents;
-    vector<LevelTriggerEvents*> levelEvents;
     DatingGame game;
     game.setGame();
-    game.run(timeEvents,levelEvents,randomEvents);
+    game.run();
     return 0;
 }
