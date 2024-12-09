@@ -552,39 +552,40 @@ void setCharacEvents(){
     ));
     characEvents[23]->setResultOne1(0,0,0,0,0,0,"他哈哈大笑：「對吧，真的很蠢。」好感度+5。");
     characEvents[23]->setResultTwo1(0,0,0,0,0,0,"他表情僵了一下：「不記得就算了。」好感度-3。");
-    characEvents[23]->setResultThree1(0,0,0,0,0,0,"他笑著說：「你還真是孩子氣。」好感度+8，壓力-5。");
+    characEvents[23]->setResultThree1(0,0,0,0,0,0,"他笑著說：「你還真是孩子氣。」好感度+8。");
 
-    characEvents.push_back(new CharacterEvents(5, 20, -5
-        "你會選擇...?",
-        ""
+    characEvents.push_back(new CharacterEvents(15, 25, -5,
+        "某晚，你收到黃梓祺的電話。他語氣輕鬆地說：「最近考試壓力大，有沒有什麼好笑的事，講來聽聽？」",
+        "1. 認真分享一件趣事，逗他笑。/2. 開玩笑：「你不會是想找我聊到半夜吧？」/3. 直接問：「你最近怎麼樣？是不是遇到什麼事了？」"
     ));
-    characEvents[24]->setResultOne1(0,0,0,0,0,0,"");
-    characEvents[24]->setResultTwo1(0,0,0,0,0,0,"");
-    characEvents[24]->setResultThree1(0,0,0,0,0,0,"");
+    characEvents[24]->setResultOne1(0,0,0,0,0,-5,"他大笑著說：「你真的太好笑了，謝啦！」好感度+8。");
+    characEvents[24]->setResultTwo1(0,0,0,0,0,0,"他笑著回：「那你得負責陪我聊完！」好感度+10。");
+    characEvents[24]->setResultThree1(0,0,0,0,0,0,"他停頓了一下，小聲說：「有點……但跟你聊聊就覺得好一點了。」好感度+15，你們的內心都覺得暖暖的。");
 
-    characEvents.push_back(new CharacterEvents(5, 20, -5
-        "你會選擇...?",
-        ""
+    characEvents.push_back(new CharacterEvents(20, 30, -10,
+        "放學時突然下起大雨，你和黃梓祺都沒帶傘。他開口說：「怎麼辦？我們只能淋雨回去了。」",
+        "1. 提議一起跑回家：「我們比賽看誰跑得快！」/2. 笑著說：「就當作雨中浪漫的體驗吧！」/3. 安排解決方案：「等等，我去借把傘。」"
     ));
-    characEvents[25]->setResultOne1(0,0,0,0,0,0,"");
-    characEvents[25]->setResultTwo1(0,0,0,0,0,0,"");
-    characEvents[25]->setResultThree1(0,0,0,0,0,0,"");
+    characEvents[25]->setResultOne1(0,0,0,0,0,-3,"他笑著同意，兩人一路奔跑，好感度+5，但衣服濕透。");
+    characEvents[25]->setResultTwo1(0,0,0,0,0,-5,"他愣了一下，然後忍不住笑出聲：「你還真有想法！」好感度+10。");
+    characEvents[25]->setResultThree1(0,0,0,0,0,0,"他驚訝地看著你：「你還真是細心。」好感度+15，雖然天氣很糟，你們的心情卻因為對方而十分雀躍。");
 
-    characEvents.push_back(new CharacterEvents(5, 20, -5
-        "你會選擇...?",
-        ""
+    characEvents.push_back(new CharacterEvents(25, 40, -5,
+        "一次走在回家路上，黃梓祺突然說：「你覺得我們小時候的關係跟現在比，有變化嗎？」",
+        "1. 認真回應：「當然變了，我們比以前更親了。」/2. 半開玩笑：「變了啊，你現在比以前更吵。」/3. 模糊回答：「也許吧，我也說不清楚。」"
     ));
-    characEvents[26]->setResultOne1(0,0,0,0,0,0,"");
-    characEvents[26]->setResultTwo1(0,0,0,0,0,0,"");
-    characEvents[26]->setResultThree1(0,0,0,0,0,0,"");
+    characEvents[26]->setResultOne1(0,0,0,0,0,0,"他愣了一下，接著笑著摸摸你的頭：「是啊……我也覺得。」好感度+10，你們就這樣進入了曖昧階段。");
+    characEvents[26]->setResultTwo1(0,0,0,0,0,0,"他笑罵你：「虧我這麼認真問。」好感度+5。");
+    characEvents[26]->setResultThree1(0,0,0,0,0,0,"他若有所思，沒再繼續說什麼，好感度+3。");
 
-    characEvents.push_back(new CharacterEvents(5, 20, -5
-        "你會選擇...?",
-        ""
+    characEvents.push_back(new CharacterEvents(30, 50, -5,
+        "放學時又又又突然下起了大雨，黃梓祺默默拿出一把傘說：「一起吧，我可不想要你淋感冒。」傘很小，兩人不得不靠得很近。",
+        "1. 感激地說：「謝謝你，真貼心。」/2. 開玩笑：「要是感冒了，你會負責照顧我嗎？」/3. 不好意思地說：「傘太小了，要不你先走吧。」"
     ));
-    characEvents[27]->setResultOne1(0,0,0,0,0,0,"");
-    characEvents[27]->setResultTwo1(0,0,0,0,0,0,"");
-    characEvents[27]->setResultThree1(0,0,0,0,0,0,"");
+    characEvents[27]->setResultOne1(0,0,0,0,0,0,"黃梓祺看著你笑了笑：「沒什麼，誰叫你是我最好的朋友呢。」好感度+10，你聽了覺得十分感動。");
+    characEvents[27]->setResultTwo1(0,0,0,0,0,0,"黃梓祺微微紅了臉：「你想讓我負責什麼？說清楚啊！」好感度+15，氣氛有些微妙。");
+    characEvents[27]->setResultThree1(0,0,0,0,0,0,"黃梓祺皺眉說：「別傻了，快過來。」好感度+5。");
+
     
     //28後為多個角色互動情境
 
