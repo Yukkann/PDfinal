@@ -358,21 +358,21 @@ void EventSystem::setEvents(){
 void setCharacEvents(){
     int n = 5;
     //0-9: events about character C
-    characEvents.push_back(new CharacterEvents(5, 20, -5
+    characEvents.push_back(new CharacterEvents(5, 15, -5
         "在補習班遇到班上的跟你很不熟的帥哥王語崴，他從遠遠的地方走來就感覺在散發光芒！你會選擇...?",
         "1. 就這樣默默看著他/2. 去跟他交談，順便跟他要哀居/3. 拿書包裡的餅乾假裝跟所有人分享，有意無意的問他要不要一起吃"
     ));
-    characEvents[0]->setResultOne1(0,0,0,0,0,0,"對方好像有看到你，對你好感度+5，不過你也沒有更認識他，但你暈了...。");
-    characEvents[0]->setResultTwo1(0,0,0,0,0,0,"對方覺得你好主動、小小嚇到，不過好感度+20。");
-    characEvents[0]->setResultThree1(0,0,0,0,0,0,"其實餅乾過期了，所有吃那包餅乾的人都食物中毒了！好感度-5。");
+    characEvents[0]->setResultOne1(0,0,n,0,-n,0,"對方好像有看到你，對你好感度+5，不過你也沒有更認識他，但你暈了...。");
+    characEvents[0]->setResultTwo1(0,0,2*n,0,0,0,"對方覺得你好主動、小小嚇到，不過好感度+20。");
+    characEvents[0]->setResultThree1(0,-n,-n,0,0,n,"其實餅乾過期了，所有吃那包餅乾的人都食物中毒了！好感度-5。");
 
-    characEvents.push_back(new CharacterEvents(5, 20, -5
+    characEvents.push_back(new CharacterEvents(20, 5, 10
         "在舞會活動中，王語崴被全場注目，帥氣地站在舞池中央。你鼓起勇氣靠近他，他剛好在拿飲料。你會選擇...?",
         "1. 主動邀舞：「可以跟我跳一支舞嗎？」/2. 裝作不經意經過：「這飲料好喝嗎？」/3. 小聲自言自語：「這麼多女生圍著他，怎麼可能輪得到我？」"
     ));
-    characEvents[1]->setResultOne1(0,0,0,0,0,0,"他有點意外但接受了，你們跳了一支尷尬但不失禮的舞，全場都羨慕死，好感度+8。");
-    characEvents[1]->setResultTwo1(0,0,0,0,0,0,"他簡單回答「還行吧」，你們沒有進一步互動，好感度+1。");
-    characEvents[1]->setResultThree1(0,0,0,0,0,0,"他聽到你的自言自語，偷偷笑了一下，但沒說什麼，好感度+3。");
+    characEvents[1]->setResultOne1(0,n,2n,0,n,n,"他有點意外但接受了，你們跳了一支尷尬但不失禮的舞，全場都羨慕死，好感度+20。");
+    characEvents[1]->setResultTwo1(0,0,0,0,0,0,"他簡單回答「還行吧」，你們沒有進一步互動，好感度+5。");
+    characEvents[1]->setResultThree1(0,0,0,0,0,0,"他聽到你的自言自語，偷偷笑了一下，但沒說什麼，好感度+10。");
 
     characEvents.push_back(new CharacterEvents(5, 20, -5
         "你和王語崴在化學實驗被分到同一組，但他全程低頭玩手機。你會選擇...?",
