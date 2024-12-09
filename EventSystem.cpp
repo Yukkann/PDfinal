@@ -358,11 +358,13 @@ void EventSystem::setEvents(){
 void setCharacEvents(){
     int n = 5;
     //0-10: events about character C
-    characEvents.push_back(new Events(
-        "你父母要求你和他們一起出門拜拜，你會選...?",
-        "1. 開心的出門和他們拜拜/2. 覺得這就是迷信，到底他媽三小/3. 跟他們說老子就是文昌帝君，不用拜"
+    characEvents.push_back(new Events(5, 20, -5
+        "在補習班遇到班上的跟你很不熟的帥哥王語崴，他從遠遠的地方走來就感覺在散發光芒！你會選擇...?",
+        "1. 就這樣默默看著他/2. 去跟他交談，順便跟他要哀居/3. 拿書包裡的餅乾假裝跟所有人分享，有意無意的問他要不要一起吃"
     ));
-
+    characEvents[0]->setResultOne1(0,0,0,0,0,0,"對方好像有看到你，好感度+5，不過你也沒有更認識他，但你暈了...");
+    characEvents[0]->setResultTwo1(0,0,0,0,0,0,"對方覺得你好主動、小小嚇到，不過好感度+20");
+    characEvents[0]->setResultThree1(0,0,0,0,0,0,"其實餅乾過期了，所有吃那包餅乾的人都食物中毒了！好感度-5");
 
 
 
