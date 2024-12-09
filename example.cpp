@@ -210,7 +210,7 @@ public:
         // 都未達標  1
 
         bool successfulGuy = false;
-        if(score >= 4000)
+        if(score >= 2000)
             successfulGuy = true;
 
         //BE
@@ -332,9 +332,9 @@ public:
         // 檢查是否達到結局條件
         // 先考試
         int score;
-        if(player.getAcademic() >= 600)
+        if(player.getAcademic() >= 300)
             score = collegeTest("easy");
-        else if (player.getAcademic() < 600 && player.getAcademic() >= 450)
+        else if (player.getAcademic() < 300 && player.getAcademic() >= 200)
             score = collegeTest("moderate");
         else score = collegeTest("hard");
         tp.setSpeed(100);
@@ -350,6 +350,7 @@ public:
             tp.type("你最終去了小葉大學......在那邊當店神\n");
         }
         // 加權結算總能力值
+        score *= 3;
         score += player.getAcademic() * 2 + player.getCharm() * 5 + player.getPopularity() * 5 + player.getStamina() * 5 + player.getLucky() * 5;
         checkLoveEnding(score);
     }
