@@ -347,6 +347,9 @@ public:
             string inputCommand; // 玩家指令
             displayStatus(); // 展示能操作的選項
             int currentMove = player.getMove(); //現在剩餘行動點等於這個玩家最高行動點上限
+            int index1 = 0; // 陳愛芬的主線章節進度
+            int index2 = 0; // 黃梓祺的主線章節進度
+            int index3 = 0; // 王語崴的主線章節進度
             while(currentMove > 0){ // 當還有行動值就會一直繼續
                 innerloop:
                 player.checkSick(); // 確認是否生病
@@ -483,6 +486,26 @@ public:
                     eventsystem.events[number_dis(gen)]->makeChoices(player, currentWeek);
                 }
                 // 再抽一次看能不能有角色共通事件
+                uniform_real_distribution<double> dis(0.0, 1.0);
+                if(dis(gen) < 0.04*player.getLucky()) {
+                    tp.type("觸發角色事件！\n");
+                    uniform_int_distribution<int> number_dis(0, 2); //0 1 2 三個角色選一個觸發
+                    // 跑出事件
+                    if(number_dis(gen) == 0 && index3 == 12){ // 王語崴
+                        eventsystem.characEvents[index3]->charMakeChoices(player);
+                        index3++;
+                    }
+                    else if(number_dis(gen) == 1 && index1 == 12){ // 陳愛芬
+                        eventsystem.characEvents[index1 + 12]->charMakeChoices(player);
+                        index1++;
+                    }
+                    else if(number_dis(gen) == 1 && index2 == 12){ // 黃梓祺
+                        eventsystem.characEvents[index2 + 24]->charMakeChoices(player);
+                        index2++;
+
+                    }
+
+                }
                 // 檢查天數是不是特別的一天
                 // 檢查角色好感度是否達標
             }
