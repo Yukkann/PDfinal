@@ -506,7 +506,7 @@ public:
         tp.type("學測中你一共獲得了");
         cout << score << "分\n";
         if(score == 75){
-            tp.type("你考上了夢寐以求的台大，家人邀請你左鄰右舍一起來放鞭炮慶祝\n");
+            tp.type("你考上了夢寐以求的台大，家人邀請你左鄰右舍一起來放鞭炮慶祝，殊不知台大的期中是他後悔的開始......\n");
         }
         else if (score == 50){
             tp.type("你考上了一所中字山大學，幸好妳的家人不是Asian partents，家人很為你高興，認為你的投入有換來回報， 你愉快地和猴子們跳起了猩猩之舞\n");
@@ -591,6 +591,8 @@ public:
                         currentMove -= 6;
                         //觸發學習事件//
                         player.modifyStats(12, -4, 4, 10, -5);
+                        tp.type("剩餘行動值：");
+                        cout << currentMove << "\n";
                     }
                 }
                 else if(commandCode == 2){ // exercise
@@ -601,6 +603,8 @@ public:
                         currentMove -= 6;
                         //觸發運動事件//
                         player.modifyStats(0, 5, 5, 12, 15);
+                        tp.type("剩餘行動值：");
+                        cout << currentMove << "\n";
                     }
                 }
                 else if(commandCode == 3){ // social
@@ -611,6 +615,8 @@ public:
                         currentMove -= 6;
                         //觸發社交事件//
                         player.modifyStats(-4, 8, 14, 4, 0);
+                        tp.type("剩餘行動值：");
+                        cout << currentMove << "\n";
                     }
                 }
                 else if(commandCode == 4){ // eat
@@ -621,6 +627,8 @@ public:
                         currentMove -= 4;
                         //觸發吃飯事件//
                         player.modifyStats(0, 0, 2, -8, -5);
+                        tp.type("剩餘行動值：");
+                        cout << currentMove << "\n";
                     }
                 }
                 else if(commandCode == 5){ // sleep
@@ -630,6 +638,8 @@ public:
                     else
                         player.modifyStats(0, 0, 0, -currentMove, 0);
                     currentMove = 0;
+                    tp.type("剩餘行動值：");
+                    cout << currentMove << "\n";
                 }
                 else if(commandCode == 6){
                     goto exit_loop; // 切到雙層迴圈外 結束遊戲
@@ -641,8 +651,6 @@ public:
                 //commandCode.clear();
 
                 }
-                tp.type("剩餘行動值：");
-                cout << currentMove << "\n";
                 currentDay ++;
                 if(currentDay == 30){
                     checkEnding();
