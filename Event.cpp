@@ -139,5 +139,57 @@ void Events::makeChoices(Player& p, int week){ //the process where event happens
         default:
             break;
     }
-    
 }
+
+//角色相關事件
+CharacterEvents::CharacterEvents(int affecOne, int affecTwo, int affecThree, string description, string choicesD) :Events::Events(description, choicesD){
+    int temp [] = {affecOne, affecTwo, affecThree};
+    for (int i=0; i<3; i++) {
+        this->changeAffection[i] = temp[i];
+    }
+}
+
+int CharacterEvents::charMakeChoices(Player& p){
+    cout << description << endl;
+    cout << choicesD << endl;
+    int choice = 0;
+    while(true){
+        cin >> choice;
+        if (choice == 1 || choice == 2 || choice == 3) {
+            break;
+        }
+        else{
+            cout << "是不是就叫你輸入1到3 再玩一次試試看啊";
+        }
+    }
+    
+    switch (choice) {
+        case 1:
+            cout << resultOneD1 << endl;
+            p.modifyStats(resultOneL1[0], resultOneL1[1], resultOneL1[2], resultOneL1[3], resultOneL1[4], resultOneL1[5]);
+            cout << "你的能力值增減為： " << "學科能力" << resultOneL1[0] << "，" << "人緣" << resultOneL1[1] << "，" << "魅力" << resultOneL1[2] << "，" << "體能" << resultOneL1[3] << "，" << "疲勞值" << resultOneL1[4] << "，" << "幸運" << resultOneL1[5] << "。" << endl;
+            return changeAffection[0];
+            
+            break;
+        case 2:
+            cout << resultTwoD1 << endl;
+            p.modifyStats(resultTwoL1[0], resultTwoL1[1], resultTwoL1[2], resultTwoL1[3], resultTwoL1[4], resultTwoL1[5]);
+            cout << "你的能力值增減為： " << "學科能力" << resultTwoL1[0] << "，" << "人緣" << resultTwoL1[1] << "，" << "魅力" << resultTwoL1[2] << "，" << "體能" << resultTwoL1[3] << "，" << "疲勞值" << resultTwoL1[4] << "，" << "幸運" << resultTwoL1[5] << "。" << endl;
+            return changeAffection[1];
+            
+            break;
+        case 3:
+            cout << resultThreeD1 << endl;
+            p.modifyStats(resultThreeL1[0], resultThreeL1[1], resultThreeL1[2], resultThreeL1[3], resultThreeL1[4], resultThreeL1[5]);
+            cout << "你的能力值增減為： " << "學科能力" << resultThreeL1[0] << "，" << "人緣" << resultThreeL1[1] << "，" << "魅力" << resultThreeL1[2] << "，" << "體能" << resultThreeL1[3] << "，" << "疲勞值" << resultThreeL1[4] << "，" << "幸運" << resultThreeL1[5] << "。" << endl;
+            return changeAffection[2];
+            
+            break;
+
+        default:
+            break;
+    }
+    return 0;
+}
+
+
