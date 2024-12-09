@@ -354,3 +354,23 @@ void EventSystem::setEvents(){
     events[29]->setResultThree1(5*n,0,0,0,-n,3*n,"你覺得幸運，讀書時很有精神，讀得超多",1,15);
     events[29]->setResultThree2(7*n,0,0,0,-n,2*n,"你覺得非常開心，讀書時也神采奕奕，吸收許多知識");
 }
+
+void setCharacEvents(){
+    int n = 5;
+    //0-10: events about character C
+    characEvents.push_back(new Events(
+        "你父母要求你和他們一起出門拜拜，你會選...?",
+        "1. 開心的出門和他們拜拜/2. 覺得這就是迷信，到底他媽三小/3. 跟他們說老子就是文昌帝君，不用拜"
+    ));
+
+
+
+
+    //11-18: events about character A
+
+
+    //19-28: events about character B
+
+
+    
+}
