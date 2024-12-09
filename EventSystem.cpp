@@ -422,62 +422,62 @@ void setCharacEvents(){
     characEvents[7]->setResultTwo2(0,0,0,0,0,0,"他有些疑惑地看了你一眼，好感度+5。");
     characEvents[7]->setResultThree2(0,0,2n,0,0,n,"他輕輕笑了一下：「看來你對我很有信心。」好感度+15。");
 
-    characEvents.push_back(new CharacterEvents(5, 20, -5
+    characEvents.push_back(new CharacterEvents(15, 10, 5
         "某次下課，王語崴主動遞給你一個耳機：「聽聽看這首歌，應該適合你。」你會選擇...?",
         "1. 認真聽：「這歌詞好像在說我，謝謝你分享。」/2. 開玩笑：「你是看我壓力大特地挑的嗎？」/3. 隨口回應：「還行吧，謝謝。」"
     ));
-    characEvents[8]->setResultOne2(0,0,0,0,0,0,"他嘴角微微上揚：「以後有好歌再分享。」好感度+10，進入曖昧階段。");
-    characEvents[8]->setResultTwo2(0,0,0,0,0,0,"他輕笑：「你壓力還真大。」好感度+8。");
-    characEvents[8]->setResultThree2(0,0,0,0,0,0,"氣氛好像有點尷尬，他也沒再多說什麼，好感度+3。");
+    characEvents[8]->setResultOne2(0,0,n,n,0,0,"他嘴角微微上揚：「以後有好歌再分享。」好感度+15，氣氛有點曖昧。");
+    characEvents[8]->setResultTwo2(0,0,n,0,0,0,"他輕笑：「你壓力還真大。」好感度+10。");
+    characEvents[8]->setResultThree2(0,0,0,0,0,0,"氣氛好像有點尷尬，他也沒再多說什麼，好感度+5。");
 
-    characEvents.push_back(new CharacterEvents(5, 20, -5
+    characEvents.push_back(new CharacterEvents(15, 10, 15
         "一次自習結束後，你在教學樓頂碰到王語崴，他正在看晚霞。見到你，他淡淡地說：「風景不錯，你也喜歡嗎？」你會選擇...?",
         "1. 誠實地回答：「是啊，很漂亮，但你比風景更吸引人。」/2. 假裝隨意：「嗯，剛好路過，沒想到會碰到你。」/3. 半開玩笑地說：「你經常一個人看晚霞，不覺得孤單嗎？」"
     ));
-    characEvents[9]->setResultOne2(0,0,0,0,0,0,"他側頭看了你一眼，嘴角微微上揚：「真有趣。」好感度+15，氣氛有點微妙。");
-    characEvents[9]->setResultTwo2(0,0,0,0,0,0,"他點點頭：「嗯，還不錯吧。」好感度+8，但沒有更進一步的互動。");
-    characEvents[9]->setResultThree2(0,0,0,0,0,0,"他笑了一下：「偶爾清靜也不錯，但今晚似乎有點不一樣。」好感度+10，氣氛輕鬆。");
+    characEvents[9]->setResultOne2(0,0,n,0,0,n,"他側頭看了你一眼，嘴角微微上揚：「真有趣。」好感度+15，氣氛有點微妙。");
+    characEvents[9]->setResultTwo2(0,0,0,0,0,0,"他點點頭：「嗯，還不錯吧。」好感度+10，但沒有更進一步的互動。");
+    characEvents[9]->setResultThree2(0,0,n,0,0,n,"他笑了一下：「偶爾清靜也不錯，但今晚似乎有點不一樣。」好感度+15，氣氛輕鬆。");
 
     //10-17: events about character A
-    characEvents.push_back(new CharacterEvents(5, 20, -5
+    characEvents.push_back(new CharacterEvents(10, -5, 5
         "你和閨蜜陳愛芬正在圖書館一起念書，她翻著一本厚重的書，突然抬頭看著你，說：「如果我們考不上大學，就一起開奶茶店吧！」。你會選擇...?",
         "1. 認真點頭：「好啊！我們一定會成為全台最強奶茶店長的！」/2. 反駁她：「你才考不上咧，別亂說話，回去念書啦！」/3. 提議另一個計劃：「不然我們去開蛋糕店，我比較喜歡吃甜的！」"
     ));
-    characEvents[10]->setResultOne2(0,0,0,0,0,0,"你們感情更好了，但因為太放鬆，今天念書進度微微不足。");
-    characEvents[10]->setResultTwo2(0,0,0,0,0,0,"她被激怒但更努力念書，好感度-3，但你們一起多做了一份模擬考。");
-    characEvents[10]->setResultThree2(0,0,0,0,0,0,"她覺得你的提議很棒，陷入甜點製作的討論中，考試壓力-10，但進度完全停擺。");
+    characEvents[10]->setResultOne2(-n,0,n,0,0,0,"你們感情更好了，但因為太放鬆，今天念書進度微微不足，好感度+10。");
+    characEvents[10]->setResultTwo2(0,0,-n,0,n,n,"她被激怒但更努力念書，好感度-5，但你們一起多做了一份模擬考。");
+    characEvents[10]->setResultThree2(-n,0,n,0,n,0,"她覺得你的提議很棒，陷入甜點製作的討論中，但讀書進度完全停擺，好感度+5。");
     
-    characEvents.push_back(new CharacterEvents(5, 20, -5
+    characEvents.push_back(new CharacterEvents(-5, 10, -5
         "陳愛芬來你家熬夜念書，結果不到兩個小時就趴桌睡著了。你會選擇...?",
         "1. 輕輕推醒她：「喂喂，醒來啦！」/2. 幫她蓋上毯子，繼續自己念書。/3. 偷偷拍她的睡相，發到群組。"
     ));
-    characEvents[11]->setResultOne2(0,0,0,0,0,0,"她醒來繼續奮鬥，但對你有點不爽，好感度-2，學習效率++。");
-    characEvents[11]->setResultTwo2(0,0,0,0,0,0,"她醒來後感激地說謝謝，好感度+10，但你覺得有點孤單，壓力有點大");
-    characEvents[11]->setResultThree2(0,0,0,0,0,0,"她醒來發現被偷拍，大叫：「你死定了！」好感度-5，不過你笑翻了。");
+    characEvents[11]->setResultOne2(n,0,n,0,n,n,"她醒來繼續奮鬥，但對你有點不爽，好感度-5，學習效率++。");
+    characEvents[11]->setResultTwo2(2*n,0,n,0,n,2*n,"她醒來後感激地說謝謝，好感度+10，但你覺得有點孤單，而且壓力有點大");
+    characEvents[11]->setResultThree2(0,0,0,0,-n,-n,"她醒來發現被偷拍，大叫：「你死定了！」好感度-5，不過你笑翻了。");
     
-    characEvents.push_back(new CharacterEvents(5, 20, -5
+    characEvents.push_back(new CharacterEvents(5, 15, 10
         "你和陳愛芬正在討論數學題，她突然說：「要是我們能直接猜題，全猜對就好了！」。你會選擇...?",
         "1. 認真回應：「猜題可不行，還是把公式記熟吧。」/2. 玩笑說：「我有個厲害的水晶球，要不要試試看？」/3. 附和她：「對啊，我們要不要試試跟老師賭題？」"
     ));
-    characEvents[12]->setResultOne2(0,0,0,0,0,0,"她笑著說：「你真無聊！」但還是努力念書，好感度+3，學習進度++");
-    characEvents[12]->setResultTwo2(0,0,0,0,0,0,"她笑得趴在桌上：「你是認真的嗎？」好感度+5，你們的壓力都在歡笑中變少了一點。");
-    characEvents[12]->setResultThree2(0,0,0,0,0,0,"她眼睛發亮，真的開始幻想作弊，好感度+1，但就這樣分心了好久。");
+    characEvents[12]->setResultOne2(2*n,0,n,0,0,n,"她笑著說：「你真無聊！」但還是努力念書，好感度+5，學習進度++");
+    characEvents[12]->setResultTwo2(0,0,2*n,0,-n,0,"她笑得趴在桌上：「你是認真的嗎？」好感度+15，你們的壓力都在歡笑中變少了一點。");
+    characEvents[12]->setResultThree2(0,0,n,0,0,0,"她眼睛發亮，真的開始幻想作弊，好感度+10，但她就這樣分心了好久。");
 
-    characEvents.push_back(new CharacterEvents(5, 20, -5
+    characEvents.push_back(new CharacterEvents(20, -5, 10
        "陳愛芬忘記帶文具，向你借計算機。但你發現這是你唯一一台。你會選擇...?",
        "1. 借她：「拿去用吧！我用心算。」/2. 說謊：「我的也沒電了，幫不了你。」/3. 提議：「一起用，但我們得很快互換。」"
    ));
-   characEvents[13]->setResultOne2(0,0,0,0,0,0,"她覺得你是超級閨蜜，好感度+15，但你因為心算錯了幾題，也覺得有點小挫折。");
-   characEvents[13]->setResultTwo2(0,0,0,0,0,0,"她勉強笑了笑，但心裡有點不開心，好感度-5。");
-   characEvents[13]->setResultThree2(0,0,0,0,0,0,"她覺得你貼心又務實，好感度+10，但你考試時間變得更緊湊，壓力+5。");
+   characEvents[13]->setResultOne2(-n,0,2*n,0,n,n,"她覺得你是超級閨蜜，好感度+20，但你因為心算錯了幾題，也覺得有點小挫折。");
+   characEvents[13]->setResultTwo2(n,0,0,0,0,-n,"她勉強笑了笑，但心裡有點不開心，好感度-5。");
+   characEvents[13]->setResultThree2(2*n,0,0,0,2*n,n,"她覺得你貼心又務實，好感度+10，但你考試時間變得更緊湊，壓力+5。");
 
-   characEvents.push_back(new CharacterEvents(5, 20, -5
+   characEvents.push_back(new CharacterEvents(15, -5, 10
        "你和陳愛芬剛考完數學，她拉著你說：「快！去全家買炸雞慶祝一下！」。你會選擇...?",
        "1. 點頭答應：「好啊，我也餓死了！」/2. 糾正她：「炸雞熱量太高，吃沙拉比較健康吧？」/3. 提議：「不如回家煮個泡麵慶祝？」"
    ));
-   characEvents[14]->setResultOne2(0,0,0,0,0,0,"你們大吃特吃，超級紓壓，但體重可就沒那麼好看了，不過她對你的好感度+5。");
-   characEvents[14]->setResultTwo2(0,0,0,0,0,0,"她翻白眼：「無趣！」好感度-3，但你的健康值+5。");
-   characEvents[14]->setResultThree2(0,0,0,0,0,0,"她覺得你很有創意，你們開了一場泡麵品評會，好感度+8。");
+   characEvents[14]->setResultOne2(0,0,0,0,0,0,"你們大吃特吃，超級紓壓，但體重可就沒那麼好看了，不過她對你的好感度+15。");
+   characEvents[14]->setResultTwo2(0,0,0,0,0,0,"她翻白眼：「無趣！」好感度-2，但你的健康有顧到。");
+   characEvents[14]->setResultThree2(0,0,0,0,0,0,"她覺得你很有創意，你們開了一場泡麵品評會，好感度+10。");
 
    characEvents.push_back(new CharacterEvents(5, 20, -5
        "你在放學時看到陳愛芬看著日曆發呆，走近一問才想起今天是她的生日。她說：「其實也沒什麼特別的，就隨便過吧。」。你會選擇...?",
