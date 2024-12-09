@@ -85,12 +85,14 @@ void Events::makeChoices(Player& p, int week){ //the process where event happens
                 playerPoints[i] = p.getCharm();
                 break;
             case 4:
-                playerPoints[i] = p.getFatigue();
+                playerPoints[i] = p.getStamina();
                 break;
             case 5:
-                playerPoints[i] = p.getLucky();
+                playerPoints[i] = p.getFatigue();
                 break;
-                
+            case 6:
+                playerPoints[i] = p.getLucky()
+            
             default:
                 break;
         }
