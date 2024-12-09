@@ -372,15 +372,15 @@ void setCharacEvents(){
     ));
     characEvents[1]->setResultOne2(0,n,2n,0,n,n,"他有點意外但接受了，你們跳了一支尷尬但不失禮的舞，全場都羨慕死，好感度+20。");
     characEvents[1]->setResultTwo2(0,0,0,0,0,0,"他簡單回答「還行吧」，你們沒有進一步互動，好感度+5。");
-    characEvents[1]->setResultThree2(0,0,0,0,0,0,"他聽到你的自言自語，偷偷笑了一下，但沒說什麼，好感度+10。");
+    characEvents[1]->setResultThree2(0,0,n,0,0,0,"他聽到你的自言自語，偷偷笑了一下，但沒說什麼，好感度+10。");
 
-    characEvents.push_back(new CharacterEvents(5, 20, -5
+    characEvents.push_back(new CharacterEvents(10, 5, 15
         "你和王語崴在化學實驗被分到同一組，但他全程低頭玩手機。你會選擇...?",
         "1. 主動分工：「我們分一下工作吧，這樣快一點。」/2. 自己一人完成全部工作。/3. 用開玩笑的語氣提醒他：「帥哥，不做事是會扣分的喔！」"
     ));
-    characEvents[2]->setResultOne2(0,0,0,0,0,0,"他勉強配合，好感度+5，但你發現他實驗很菜。");
-    characEvents[2]->setResultTwo2(0,0,0,0,0,0,"他感激地說：「謝啦！」好感度+10，但你壓力滿滿。");
-    characEvents[2]->setResultThree2(0,0,0,0,0,0,"他尷尬地放下手機，努力幫忙，好感度+8。");
+    characEvents[2]->setResultOne2(n,0,0,0,-n,n,"他勉強配合，好感度+10，但你發現他實驗很菜。");
+    characEvents[2]->setResultTwo2(2n,0,2n,0,-2n,n,"他感激地說：「謝啦！」好感度+5，但你壓力滿滿。");
+    characEvents[2]->setResultThree2(n,0,n,0,-n,0,"他尷尬地放下手機，努力幫忙，好感度+15。");
 
     characEvents.push_back(new CharacterEvents(5, 20, -5
         "你經過音樂教室，聽見王語崴在彈吉他。你會選擇...?",
