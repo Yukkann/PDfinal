@@ -165,25 +165,23 @@ int CharacterEvents::charMakeChoices(Player& p){
     
     switch (choice) {
         case 1:
-            cout << resultOneD1 << endl;
-            p.modifyStats(resultOneL1[0], resultOneL1[1], resultOneL1[2], resultOneL1[3], resultOneL1[4], resultOneL1[5]);
-            cout << "你的能力值增減為： " << "學科能力" << resultOneL1[0] << "，" << "人緣" << resultOneL1[1] << "，" << "魅力" << resultOneL1[2] << "，" << "體能" << resultOneL1[3] << "，" << "疲勞值" << resultOneL1[4] << "，" << "幸運" << resultOneL1[5] << "。" << endl;
+            cout << resultOneD2 << endl;
+            p.modifyStats(resultOneL2[0], resultOneL2[1], resultOneL2[2], resultOneL2[3], resultOneL2[4], resultOneL2[5]);
+            cout << "你的能力值增減為： " << "學科能力" << resultOneL2[0] << "，" << "人緣" << resultOneL2[1] << "，" << "魅力" << resultOneL2[2] << "，" << "體能" << resultOneL2[3] << "，" << "疲勞值" << resultOneL2[4] << "，" << "幸運" << resultOneL1[5] << "。" << endl;
             return changeAffection[0];
-            
             break;
         case 2:
-            cout << resultTwoD1 << endl;
-            p.modifyStats(resultTwoL1[0], resultTwoL1[1], resultTwoL1[2], resultTwoL1[3], resultTwoL1[4], resultTwoL1[5]);
-            cout << "你的能力值增減為： " << "學科能力" << resultTwoL1[0] << "，" << "人緣" << resultTwoL1[1] << "，" << "魅力" << resultTwoL1[2] << "，" << "體能" << resultTwoL1[3] << "，" << "疲勞值" << resultTwoL1[4] << "，" << "幸運" << resultTwoL1[5] << "。" << endl;
-            return changeAffection[1];
-            
+            cout << resultTwoD2 << endl;
+            p.modifyStats(resultTwoL2[0], resultTwoL2[1], resultTwoL2[2], resultTwoL2[3], resultTwoL2[4], resultTwoL2[5]);
+            cout << "你的能力值增減為： " << "學科能力" << resultTwoL2[0] << "，" << "人緣" << resultTwoL2[1] << "，" << "魅力" << resultTwoL2[2] << "，" << "體能" << resultTwoL2[3] << "，" << "疲勞值" << resultTwoL2[4] << "，" << "幸運" << resultTwoL2[5] << "。" << endl;
+            return changeAffection[1]
             break;
         case 3:
-            cout << resultThreeD1 << endl;
-            p.modifyStats(resultThreeL1[0], resultThreeL1[1], resultThreeL1[2], resultThreeL1[3], resultThreeL1[4], resultThreeL1[5]);
-            cout << "你的能力值增減為： " << "學科能力" << resultThreeL1[0] << "，" << "人緣" << resultThreeL1[1] << "，" << "魅力" << resultThreeL1[2] << "，" << "體能" << resultThreeL1[3] << "，" << "疲勞值" << resultThreeL1[4] << "，" << "幸運" << resultThreeL1[5] << "。" << endl;
+            cout << resultThreeD2 << endl;
+            p.modifyStats(resultThreeL2[0], resultThreeL2[1], resultThreeL2[2], resultThreeL2[3], resultThreeL2[4], resultThreeL2[5]);
+            cout << "你的能力值增減為： " << "學科能力" << resultThreeL2[0] << "，" << "人緣" << resultThreeL2[1] << "，" << "魅力" << resultThreeL2[2] << "，" << "體能" << resultThreeL2[3] << "，" << "疲勞值" << resultThreeL2[4] << "，" << "幸運" << resultThreeL2[5] << "。" << endl;
             return changeAffection[2];
-            
+
             break;
 
         default:
