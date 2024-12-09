@@ -9,5 +9,7 @@ class EventSystem{
     public:
         std::vector<Events*> events;
         void setEvents();
+        std::vector<CharacterEvents*> characEvents;
+        void setCharacEvents();
 };
 #endif
