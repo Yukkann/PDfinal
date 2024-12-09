@@ -40,4 +40,14 @@ public:
     void makeChoices(Player& p, int week);
     virtual ~Events() {}
 };
+
+class CharacterEvents : public Events
+{
+private:
+    int changeAffection[3];
+public:
+    CharacterEvents(int affecOne, int affecTwo, int affecThree, string description, string choicesD);
+    int charMakeChoices(Player& p);
+};
+
 #endif
