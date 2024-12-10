@@ -465,6 +465,8 @@ public:
         while(true) {
             string inputCommand; // 玩家指令
             displayStatus(); // 展示能操作的選項
+            bool eventHappen = false;
+            bool charEventHappen = false;
             int currentMove = player.getMove(); //現在剩餘行動點等於這個玩家最高行動點上限
             int index1 = 0; // 陳愛芬的主線章節進度
             int index2 = 0; // 黃梓祺的主線章節進度
