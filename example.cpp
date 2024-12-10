@@ -148,8 +148,8 @@ public:
         // 三者都滿100
         // 都未達標
         bool successfulGuy = false;
-        if(score >= 4000)
-        successfulGuy = true;
+        if(score >= 3000)
+            successfulGuy = true;
         //BE
         if(characters[0].getAffection() < 100 && characters[1].getAffection() < 100 && characters[2].getAffection() < 100)
         {
@@ -318,7 +318,7 @@ public:
         else score = collegeTest("hard");
         tp.setSpeed(100);
         tp.type("學測中你一共獲得了");
-        cout << score << "分\n";
+        cout << score << "級分\n";
         if(score == 75){
             tp.type("你考上了夢寐以求的台大，家人邀請你左鄰右舍一起來放鞭炮慶祝，\n殊不知台大的期中是他後悔的開始......\n");
         }
@@ -333,13 +333,13 @@ public:
         score += player.getAcademic() * 2 + player.getCharm() * 5 + player.getPopularity() * 5 + player.getStamina() * 5 + player.getLucky() * 5;
         checkLoveEnding(score);
     }
-    int collegeTest(string level){
+     int collegeTest(string level){
         tp.type("今天是大考的日子......");
         pause();
         tp.type("考卷：！注意！以錯誤格式輸入導致無法辨識者，計為零分。");
         int score = 0;
-        int answer[3] = {};
-        int solution[3]={0};
+        int answer[3] = {0,0,0};
+        int solution[3]={0,0,0};
         if(level == "easy"){
             solution[0] = 4;
             solution[1] = 2;
@@ -392,8 +392,8 @@ public:
             tp.type("請作答：");
             cin >> answer[2];
         }
-        for(int i; i < 3; i++){ // 對答案
-            if(i == solution[i]){
+        for(int i = 0; i < 3; i++){ // 對答案
+            if(answer[i] == solution[i]){
                 score += 25;
             }
         }
