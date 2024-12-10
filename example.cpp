@@ -613,18 +613,21 @@ public:
                     tp.type("看清楚選項！請輸入一個數字後直接按下Enter\n");
                     goto innerloop; // 回到開始選項的地方
                 }
-
-                random_device rd;  // 用來產生種子
-                mt19937 gen(rd()); // Mersenne Twister 生成器
-                // 建立均勻分布的隨機浮點數生成器 (0.0 到 1.0)
-                uniform_real_distribution<double> dis(0.0, 1.0);
-                // 生成隨機數並判斷是否中獎 (10% 機率)
-                if(dis(gen) < 0.04*player.getLucky()) {
-                    tp.type("觸發隨機事件！\n");
-                    uniform_int_distribution<int> number_dis(0, 29); //編號0~29的事件
-                    // 跑出事件
-                    eventsystem.events[number_dis(gen)]->makeChoices(player, currentWeek);
+                if(!eventHappen){
+                    random_device rd;  // 用來產生種子
+                    mt19937 gen(rd()); // Mersenne Twister 生成器
+                    // 建立均勻分布的隨機浮點數生成器 (0.0 到 1.0)
+                    uniform_real_distribution<double> dis(0.0, 1.0);
+                    // 生成隨機數並判斷是否中獎 (10% 機率)
+                    if(dis(gen) < 0.04*player.getLucky()) {
+                        tp.type("觸發隨機事件！\n");
+                        uniform_int_distribution<int> number_dis(0, 29); //編號0~29的事件
+                        // 跑出事件
+                        eventsystem.events[number_dis(gen)]->makeChoices(player, currentWeek);
+                    }
+                    eventHappen = true;
                 }
+                
                 // 再抽一次看能不能有角色共通事件
                 uniform_real_distribution<double> dis(0.0, 1.0);
                 if(dis(gen) < 0.04*player.getLucky()) {
