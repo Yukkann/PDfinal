@@ -708,7 +708,7 @@ public:
         tp.type("           <目前狀態>          \n");
         cout <<"學科值： "<<player.getAcademic() << " 體能： " << player.getStamina() << " 魅力: " << player.getCharm() << " 幸運: " << player.getLucky() << " 疲勞值: " << player.getFatigue()<< " 行動點數上限: "<< player.getMove() << "\n";
         tp.type("你可以選擇做這些事情：");
-        tp.type("1.study(消耗6點行動值), 2.exercise(消耗6點行動值), 3.social(消耗6點行動值), 4.eat(消耗4點行動值，減少一點點疲勞), 5.sleep(清空所有行動值，減少疲勞值)\n");
+        tp.type("1.study(消耗6點行動值), 2.exercise(消耗6點行動值), 3.social(消耗6點行動值), 4.eat(消耗4點行動值，減少一點點疲勞), 5.pray (消耗四點行動值，可增加幸運值，洗除妳的罪孽), 6.sleep(清空所有行動值，減少疲勞值)\n");
         
     }
 
@@ -729,7 +729,7 @@ public:
                 if(isdigit(inputCommand[i]))
                 {
                     int commandDigit = inputCommand[i] - '0';
-                    if(commandDigit >= 1 && commandDigit <= 5)
+                    if(commandDigit >= 1 && commandDigit <= 6)
                     {
                         trueCommand = inputCommand[i];
                         Valid = true;
@@ -746,7 +746,7 @@ public:
             if(trueCommand != 'Q')
                 return trueCommand - '0';
             else
-                return 6;
+                return 7;
         }
     }
     void pause() { // press Enter to continue
