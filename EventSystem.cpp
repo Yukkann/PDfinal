@@ -355,7 +355,7 @@ void EventSystem::setEvents(){
     events[29]->setResultThree2(7*n,0,0,0,-n,2*n,"你覺得非常開心，讀書時也神采奕奕，吸收許多知識");
 }
 
-void setCharacEvents(){
+void EventSystem::setCharacEvents(){
     int n = 5;
     //0-9: events about character C
     characEvents.push_back(new CharacterEvents(5, 15, -5,
