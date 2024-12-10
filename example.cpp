@@ -264,6 +264,9 @@ public:
             int index1 = 0; // 陳愛芬的主線章節進度
             int index2 = 0; // 黃梓祺的主線章節進度
             int index3 = 0; // 王語崴的主線章節進度
+            bool eventHappen = false;
+            bool charEventHappen = false;
+            bool ranCharHappen = false;
             while(currentMove > 0){ // 當還有行動值就會一直繼續
                 displayStatus(); // 展示能操作的選項
                 innerloop:
@@ -408,59 +411,67 @@ public:
                     tp.type("看清楚選項！請輸入一個數字後直接按下Enter\n");
                     goto innerloop; // 回到開始選項的地方
                 }
-
-                // 隨機事件檢查
-                random_device rdRandom;
-                mt19937 genRandom(rdRandom());
-                uniform_real_distribution<double> disRandom(0.0, 1.0);
-                if(disRandom(genRandom) < 0.04 * player.getLucky()) {
-                    tp.type("觸發隨機事件！\n");
-                    uniform_int_distribution<int> eventIndex(0, 29);
-                    eventsystem.events[eventIndex(genRandom)]->makeChoices(player, currentWeek);
+                if(!eventHappen){
+                    // 隨機事件檢查
+                    random_device rdRandom;
+                    mt19937 genRandom(rdRandom());
+                    uniform_real_distribution<double> disRandom(0.0, 1.0);
+                    if(disRandom(genRandom) < 0.04 * player.getLucky()) {
+                        tp.type("觸發隨機事件！\n");
+                        uniform_int_distribution<int> eventIndex(0, 29);
+                        eventsystem.events[eventIndex(genRandom)]->makeChoices(player, currentWeek);
+                        eventHappen = true;
+                    }
                 }
-
-                // 角色劇情事件檢查
-                random_device rdStory;
-                mt19937 genStory(rdStory());
-                uniform_real_distribution<double> disStory(0.0, 1.0);
-                if(disStory(genStory) < 0.04 * player.getLucky()) {
-                    tp.type("觸發角色事件！\n");
-                    uniform_int_distribution<int> charIndex(0, 2);
-                    int character = charIndex(genStory);
+                
+                if(!charEventHappen){
+                    // 角色劇情事件檢查
+                    random_device rdStory;
+                    mt19937 genStory(rdStory());
+                    uniform_real_distribution<double> disStory(0.0, 1.0);
+                    if(disStory(genStory) < 0.04 * player.getLucky()) {
+                        tp.type("觸發角色事件！\n");
+                        uniform_int_distribution<int> charIndex(0, 2);
+                        int character = charIndex(genStory);
                     
-                    if(character == 0 && index3 != 10) { // 王語崴
-                        characters[2].addAffection(eventsystem.characEvents[index3]->charMakeChoices(player));
-                        index3 += 1;
-                    }
-                    else if(character == 1 && index1 != 18) { // 陳愛芬
-                        characters[0].addAffection(eventsystem.characEvents[index1 + 10]->charMakeChoices(player));
-                        index1 += 1;
-                    }
-                    else if(character == 2 && index2 != 28) { // 黃梓祺
-                        characters[1].addAffection(eventsystem.characEvents[index2 + 18]->charMakeChoices(player));
-                        index2 += 1;
+                        if(character == 0 && index3 != 10) { // 王語崴
+                            characters[2].addAffection(eventsystem.characEvents[index3]->charMakeChoices(player));
+                            index3 += 1;
+                        }
+                        else if(character == 1 && index1 != 18) { // 陳愛芬
+                            characters[0].addAffection(eventsystem.characEvents[index1 + 10]->charMakeChoices(player));
+                            index1 += 1;
+                        }
+                        else if(character == 2 && index2 != 28) { // 黃梓祺
+                            characters[1].addAffection(eventsystem.characEvents[index2 + 18]->charMakeChoices(player));
+                            index2 += 1;
+                        }
+                        charEventHappen = true;
                     }
                 }
-                // 角色日常事件檢查
-                random_device rdDaily;
-                mt19937 genDaily(rdDaily());
-                uniform_real_distribution<double> disDaily(0.0, 1.0);
-                if(disDaily(genDaily) < 0.04 * player.getLucky()) {
-                    tp.type("觸發角色日常事件！\n");
-                    uniform_int_distribution<int> charIndex(0, 2);
-                    int character = charIndex(genDaily);
-                    uniform_int_distribution<int> eventIndex(29, 31);
+
+                if(!ranCharHappen && currentWeek%4 == 0)
+                    // 角色日常事件檢查
+                    random_device rdDaily;
+                    mt19937 genDaily(rdDaily());
+                    uniform_real_distribution<double> disDaily(0.0, 1.0);
+                    if(disDaily(genDaily) < 0.04 * player.getLucky()) {
+                        tp.type("觸發角色日常事件！\n");
+                        uniform_int_distribution<int> charIndex(0, 2);
+                        int character = charIndex(genDaily);
+                        uniform_int_distribution<int> eventIndex(29, 31);
                     
-                    if(character == 0) { // 王語崴
-                        characters[2].addAffection(eventsystem.characEvents[eventIndex(genDaily)]->charMakeChoices(player));
+                        if(character == 0) { // 王語崴
+                            characters[2].addAffection(eventsystem.characEvents[eventIndex(genDaily)]->charMakeChoices(player));
+                        }
+                        else if(character == 1) { // 陳愛芬
+                            characters[0].addAffection(eventsystem.characEvents[eventIndex(genDaily)]->charMakeChoices(player));
+                        }
+                        else if(character == 2) { // 黃梓祺
+                            characters[1].addAffection(eventsystem.characEvents[eventIndex(genDaily)]->charMakeChoices(player));
+                        }
+                        ranCharHappen = true;
                     }
-                    else if(character == 1) { // 陳愛芬
-                        characters[0].addAffection(eventsystem.characEvents[eventIndex(genDaily)]->charMakeChoices(player));
-                    }
-                    else if(character == 2) { // 黃梓祺
-                        characters[1].addAffection(eventsystem.characEvents[eventIndex(genDaily)]->charMakeChoices(player));
-                    }
-                }
             }
             currentWeek ++;
             if(currentWeek == 30){
