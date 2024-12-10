@@ -450,7 +450,7 @@ public:
                     }
                 }
 
-                if(!ranCharHappen && currentWeek%4 == 0)
+                if(!ranCharHappen && currentWeek%4 == 0){
                     // 角色日常事件檢查
                     random_device rdDaily;
                     mt19937 genDaily(rdDaily());
@@ -472,6 +472,7 @@ public:
                         }
                         ranCharHappen = true;
                     }
+                }
             }
             currentWeek ++;
             if(currentWeek == 30){
