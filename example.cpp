@@ -611,7 +611,7 @@ public:
                     uniform_int_distribution<int> number_dis(0, 2); //0 1 2 三個角色選一個觸發
                     // 跑出事件
                     if(number_dis(gen) == 0 && index3 != 10){ // 王語崴
-                        characters[3].addAffection(eventsystem.characEvents[index3]->charMakeChoices(player));
+                        characters[2].addAffection(eventsystem.characEvents[index3]->charMakeChoices(player));
                         index3++;
                         
                     }
