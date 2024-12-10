@@ -596,71 +596,71 @@ void EventSystem::setCharacEvents(){
         "1. 就這樣默默看著他/2. 去跟他聊天，邀請他一起去圖書館念書/3. 去跟他聊天，邀請他一起去夜店狂歡"
     ));
     characEvents[28]->setResultOne2(0,0,0,0,0,0,"你們就這樣默默對視一分鐘，好感度+5");
-    characEvents[28]->setResultTwo2(10,0,0,0,0,0,"對方微微瞳孔地震，他竟然答應妳了！好感度+4，一起念書學科能力 + 10");
+    characEvents[28]->setResultTwo2(2*n,0,0,0,0,0,"對方微微瞳孔地震，他竟然答應妳了！好感度+4，一起念書學科能力 + 10");
     characEvents[28]->setResultThree2(0,0,0,0,0,0,"他很驚嚇，並表示自己不喜歡這樣的場合，好感度-5");
     
     characEvents.push_back(new CharacterEvents(-5, 5, 0,
         "王語崴在掃外掃區的女廁，他看起來很辛苦！你會選擇...?",
         "1. 直接進去拉一坨大的/2. 幫他一起掃，把有血的衛生棉清走/3. 不給他帶來麻煩，直接憋著"
     ));
-    characEvents[29]->setResultOne2(0,-n,0,5,0,0,"臭氣沖天但很舒爽，王語崴對妳的印象下降了，好感度-5，體能+5");
-    characEvents[29]->setResultTwo2(0,n,10,0,0,0,"王語崴感謝妳的幫忙，妳人真好，好感度+5，魅力+10");
-    characEvents[29]->setResultThree2(0,0,0,-5,5,n,"妳得了膀胱炎了，體能-5，疲勞度+5");
+    characEvents[29]->setResultOne2(0,0,0,n,0,0,"臭氣沖天但很舒爽，王語崴對妳的印象下降了，好感度-5，體能+5");
+    characEvents[29]->setResultTwo2(0,0,2*n,0,0,0,"王語崴感謝妳的幫忙，妳人真好，好感度+5，魅力+10");
+    characEvents[29]->setResultThree2(0,0,0,0,n,0,"妳得了膀胱炎了，體能-5，疲勞度+5");
 
     characEvents.push_back(new CharacterEvents(10, 0, 5,
         "王語崴在上課時睡著了，但現在課上到很重要的地方！你會選擇...?",
         "1. 輕輕拍打他的肩膀，輕柔地呼喚他起床/2. 揉一坨紙球丟他把他叫醒/3. 直接在他課本上畫畫"
     ));
-    characEvents[30]->setResultOne2(0,n,0,0,0,0,"王語崴醒來了，妳發現他有羞紅的一雙耳朵，好感度+10");
-    characEvents[30]->setResultTwo2(0,0,0,0,0,20,"王語崴沒有醒來，繼續呼呼大睡，幸運值+20");
-    characEvents[30]->setResultThree2(0,n,10,0,0,0,"妳畫得很好，王語崴醒來後難得的稱讚了妳的繪畫技巧，好感度+5，魅力+10");
+    characEvents[30]->setResultOne2(0,0,4*n,0,0,0,"王語崴醒來了，妳發現他有羞紅的一雙耳朵，好感度+10");
+    characEvents[30]->setResultTwo2(0,0,0,0,0,4*n,"王語崴沒有醒來，繼續呼呼大睡，幸運值+20");
+    characEvents[30]->setResultThree2(0,2*n,0,0,0,"妳畫得很好，王語崴醒來後難得的稱讚了妳的繪畫技巧，好感度+5，魅力+10");
 
     characEvents.push_back(new CharacterEvents(5, 4, -5,
         "陳愛芬興奮地向妳跑來，並在妳面前停下，她氣喘吁吁，似乎有什麼話要說，你會選擇...?",
         "1. 拿出手帕給她擦汗/2. 等她喘完再聽他要說什麼/3. 妳瀟灑底地冷笑一聲，跑去飲水機裝水"
     ));
-    characEvents[31]->setResultOne2(0,0,10,0,0,0,"陳愛芬很感謝妳，並故作姿態地在手帕上聞了聞，妳感到有點不好意思，好感度+5，魅力+10");
-    characEvents[31]->setResultTwo2(0,10,0,0,0,0,"陳愛芬和妳分享了很多有趣得八卦見聞，好感度+4，人緣 + 10");
-    characEvents[31]->setResultThree2(0,0,0,10,0,0,"陳愛芬滿頭問號，但妳喝了很多水變健康了，好感度-5，體能+10");
+    characEvents[31]->setResultOne2(0,0,2*n,0,0,0,"陳愛芬很感謝妳，並故作姿態地在手帕上聞了聞，妳感到有點不好意思，好感度+5，魅力+10");
+    characEvents[31]->setResultTwo2(0,2*n,0,0,0,0,"陳愛芬和妳分享了很多有趣得八卦見聞，好感度+4，人緣 + 10");
+    characEvents[31]->setResultThree2(0,0,0,2*n,0,0,"陳愛芬滿頭問號，但妳喝了很多水變健康了，好感度-5，體能+10");
 
     characEvents.push_back(new CharacterEvents(0, 5, 0,
         "陳愛芬假日想約妳出去逛街喝下午茶，但妳那天剛好有補習，你會選擇...?",
         "1. 先答應再說/2. 委婉拒絕/3. 改成約在補習班下課後出去玩"
     ));
-    characEvents[32]->setResultOne2(0,10,0,0,0,0,"陳愛芬當天剛好臨時有事無法赴約，好險妳也是，人緣+10");
-    characEvents[32]->setResultTwo2(0,5,n,0,0,0,"陳愛芬說沒關係下次再約，好感+5，人緣+5");
-    characEvents[32]->setResultThree2(0,-5,0,0,0,0,"妳那天考不及格被留下來課後輔導，陳愛芬在外頭乾等了一個小時，好感-5，人緣-5");
+    characEvents[32]->setResultOne2(0,2*n,0,0,0,0,"陳愛芬當天剛好臨時有事無法赴約，好險妳也是，人緣+10");
+    characEvents[32]->setResultTwo2(0,n,0,0,0,0,"陳愛芬說沒關係下次再約，好感+5，人緣+5");
+    characEvents[32]->setResultThree2(0,-n,0,0,0,0,"妳那天考不及格被留下來課後輔導，陳愛芬在外頭乾等了一個小時，好感-5，人緣-5");
 
     characEvents.push_back(new CharacterEvents(-10, -5, 10,
         "陳愛芬最近似乎有心事，常常盯著某個點放空，身為她的閨蜜妳會選擇...?",
         "1. 當作沒這回事/2. 去向他人打聽她最近的狀況/3. 直接去關心她最近怎麼了"
     ));
-    characEvents[33]->setResultOne2(0,0,0,0,-10,0,"陳愛芬臉上的陰霾神奇地消失了，好感度-10，疲勞度-10");
+    characEvents[33]->setResultOne2(0,0,0,0,-2*n,0,"陳愛芬臉上的陰霾神奇地消失了，好感度-10，疲勞度-10");
     characEvents[33]->setResultTwo2(0,0,0,0,0,0,"陳愛芬誤以為妳故意跟她不親近了，心結。好感度-5");
-    characEvents[33]->setResultThree2(0,0,10,0,0,0,"她告訴妳她最近喜歡吃的早餐倒了，她很傷心，好感度+10，人緣+10");
+    characEvents[33]->setResultThree2(0,0,2*n,0,0,0,"她告訴妳她最近喜歡吃的早餐倒了，她很傷心，好感度+10，人緣+10");
 
     characEvents.push_back(new CharacterEvents(10, 5, -5,
         "有一天黃梓祺拿著不會的數學題來問妳，剛好妳也不會，你會選擇...?",
         "1. 直接拿去問老師/2. 一起討論看看想法/3. 站在桌子上一言不發，"
     ));
-    characEvents[34]->setResultOne2(10,0,0,0,0,0,"黃梓祺很欣賞妳不恥下問的精神，好感度+10，學科能力+10");
-    characEvents[34]->setResultTwo2(5,0,0,0,0,0,"兩個人討論一天也沒討論出什麼結果，好感度+5，學科能力 + 5");
+    characEvents[34]->setResultOne2(2*n,0,0,0,0,0,"黃梓祺很欣賞妳不恥下問的精神，好感度+10，學科能力+10");
+    characEvents[34]->setResultTwo2(n,0,0,0,0,0,"兩個人討論一天也沒討論出什麼結果，好感度+5，學科能力 + 5");
     characEvents[34]->setResultThree2(0,0,0,0,0,0,"黃梓祺滿頭問號，好感度-5");
 
     characEvents.push_back(new CharacterEvents(5, 5, 10,
         "黃梓祺在籃球場上打籃球，汗水淋漓的看起來特別閃耀！你會選擇...?",
         "1. 默默在一旁觀察/2. 在場邊跳毛利戰舞，給他助力！/3. 等中場休息給他遞水"
     ));
-    characEvents[35]->setResultOne2(0,0,0,0,0,5,"即使這樣，黃梓祺還是看見你了，他很高興妳特地來見他，好感度+5，幸運+5");
-    characEvents[35]->setResultTwo2(0,0,0,-10,0,0,"他一瞬間回過頭去看妳，沒想到他一分神沒接到傳球，球砸到妳臉上，好感度+5，體能-10");
-    characEvents[35]->setResultThree2(0,0,10,0,0,0,"黃梓祺像一隻金毛狗狗一樣，在休息時朝著妳跑去，好感+10，魅力+10");
+    characEvents[35]->setResultOne2(0,0,0,0,0,n,"即使這樣，黃梓祺還是看見你了，他很高興妳特地來見他，好感度+5，幸運+5");
+    characEvents[35]->setResultTwo2(0,0,0,-2*n,0,0,"他一瞬間回過頭去看妳，沒想到他一分神沒接到傳球，球砸到妳臉上，好感度+5，體能-10");
+    characEvents[35]->setResultThree2(0,0,2*n,0,0,0,"黃梓祺像一隻金毛狗狗一樣，在休息時朝著妳跑去，好感+10，魅力+10");
 
     characEvents.push_back(new CharacterEvents(-10, -5, 5,
         "黃梓祺跟你抱怨最近王語崴都不理他，你會選擇...?",
         "1. 要是我是你女朋友，我才不會讓你委屈呢/2. 直接找王語崴輸贏/3.建議他跟王語崴比國際拉屎手勢，增進感情"
     ));
-    characEvents[36]->setResultOne2(0,0,0,0,10,0,"妳是綠茶嗎?黃梓祺略帶嘲諷的說，好感度-10，疲勞值+10");
-    characEvents[36]->setResultTwo2(0,0,-10,0,0,0,"黃梓祺覺得是妳加深了他們之間的嫌隙，好感度-5，魅力-10");
-    characEvents[36]->setResultThree2(0,0,10,0,0,0,"黃梓祺覺得妳很有病，但是過之後沒想到效果卓越，好感度+5，魅力+10");
+    characEvents[36]->setResultOne2(0,0,0,0,2*n,0,"妳是綠茶嗎?黃梓祺略帶嘲諷的說，好感度-10，疲勞值+10");
+    characEvents[36]->setResultTwo2(0,0,-2*n,0,0,0,"黃梓祺覺得是妳加深了他們之間的嫌隙，好感度-5，魅力-10");
+    characEvents[36]->setResultThree2(0,0,2*n,0,0,0,"黃梓祺覺得妳很有病，但是過之後沒想到效果卓越，好感度+5，魅力+10");
     
 }
