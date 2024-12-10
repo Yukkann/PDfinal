@@ -167,7 +167,7 @@ int CharacterEvents::charMakeChoices(Player& p){
         case 1:
             cout << resultOneD2 << endl;
             p.modifyStats(resultOneL2[0], resultOneL2[1], resultOneL2[2], resultOneL2[3], resultOneL2[4], resultOneL2[5]);
-            cout << "你的能力值增減為： " << "學科能力" << resultOneL2[0] << "，" << "人緣" << resultOneL2[1] << "，" << "魅力" << resultOneL2[2] << "，" << "體能" << resultOneL2[3] << "，" << "疲勞值" << resultOneL2[4] << "，" << "幸運" << resultOneL1[5] << "。" << endl;
+            cout << "你的能力值增減為： " << "學科能力" << resultOneL2[0] << "，" << "人緣" << resultOneL2[1] << "，" << "魅力" << resultOneL2[2] << "，" << "體能" << resultOneL2[3] << "，" << "疲勞值" << resultOneL2[4] << "，" << "幸運" << resultOneL2[5] << "。" << endl;
             return changeAffection[0];
             break;
         case 2:
