@@ -610,17 +610,17 @@ public:
                     tp.type("觸發角色事件！\n");
                     uniform_int_distribution<int> number_dis(0, 2); //0 1 2 三個角色選一個觸發
                     // 跑出事件
-                    if(number_dis(gen) == 0 && index3 != 12){ // 王語崴
+                    if(number_dis(gen) == 0 && index3 != 10){ // 王語崴
                         characters[3].addAffection(eventsystem.characEvents[index3]->charMakeChoices(player));
                         index3++;
                         
                     }
-                    else if(number_dis(gen) == 1 && index1 != 9){ // 陳愛芬
-                        characters[0].addAffection(eventsystem.characEvents[index1 + 11]->charMakeChoices(player));
+                    else if(number_dis(gen) == 1 && index1 != 8){ // 陳愛芬
+                        characters[0].addAffection(eventsystem.characEvents[index1 + 10]->charMakeChoices(player));
                         index1++;
                     }
-                    else if(number_dis(gen) == 1 && index2 != 11){ // 黃梓祺
-                        characters[1].addAffection(eventsystem.characEvents[index2 + 19]->charMakeChoices(player));
+                    else if(number_dis(gen) == 1 && index2 != 10){ // 黃梓祺
+                        characters[1].addAffection(eventsystem.characEvents[index2 + 18]->charMakeChoices(player));
                         index2++;
                     }
 
