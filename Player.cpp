@@ -62,8 +62,8 @@ bool Player::successfullGuy(int score) {
     else if(score < 50)
         return false;
     else {
-        int averageScore = academic + popularity * 2.5 + charm * 2 + stamina * 1.5 - fatigue * 2;
-        if(averageScore > 600)
+        int averageScore = academic + popularity * 2.5 + charm * 2 + stamina * 1.5 - fatigue * 2 + lucky * 3;
+        if(averageScore > 2500)
             return true;
         else
             return false;
@@ -80,6 +80,13 @@ std::string Player::getName() const { return playerName; }
 int Player::getMove() const { return move; }
 int Player::getLucky() const { return lucky; }
 bool Player::getSick() const {return sick;};
+void Player::displayPlayer(){
+    std::cout << "<" << playerName << "的目前狀態> 學科能力：" << academic << " 人緣：" << popularity << " 魅力：" << charm << " 疲勞值：" << fatigue << " 體能：" << stamina << " 幸運：" << lucky << "。" << std::endl;
+}
+void Player::print(){
+    std::cout << "你可以選擇做這些事情：";
+    std::cout <<"1.study(消耗10點行動值), 2.exercise(消耗10點行動值), 3.social(消耗10點行動值), 4.eat(消耗5點行動值，減少一點點疲勞), 5.pray (消耗10點行動值，可增加幸運值，洗除妳的罪孽), 6.sleep(清空所有行動值，減少疲勞值)\n";
+}
 // check if fatigue is too high
 void Player::checkSick(){
     if(fatigue >= 100){

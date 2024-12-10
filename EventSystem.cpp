@@ -12,7 +12,7 @@ void EventSystem::setEvents(){
     events[0]->setResultTwo1(2*n,-2*n,-2*n,0,0,-n,"雖然書讀得多，但也不能白目...",1,15);
     events[0]->setResultTwo2(0,-2*n,-2*n,0,0,-n,"你這白目鬼...");
     events[0]->setResultThree1(n,-2*n,-5*n,0,0,-n,"今天文昌帝君開心，沒有給妳很大懲罰...",6,20);
-    events[0]->setResultThree2(n,-2*n,-5*n,0,0,-n,"今天運氣不好，文章帝君生氣了，給你下降頭...");
+    events[0]->setResultThree2(n,-2*n,-5*n,0,0,-n,"今天運氣不好，文昌帝君生氣了，給你下降頭...");
 
     //event2
     events.push_back(new Events(
@@ -77,7 +77,7 @@ void EventSystem::setEvents(){
     // event7
     events.push_back(new Events(
         "你爸媽今天突然被公司裁員了，家裡氣氛凝重，你想要...?",
-        "1. 好好讀書，大人的是小孩不要管/2. 身為孩子必須當一下和事佬，去緩和氣氛/3. 反正我這輩子就這樣了，躺平比較快"
+        "1. 好好讀書，大人的事小孩不要管/2. 身為孩子必須當一下和事佬，去緩和氣氛/3. 反正我這輩子就這樣了，躺平比較快"
     ));
     events[6]->setResultOne1(2*n, 0, -n, -n, n, 0, "看在你乖乖讀書有成果的份上，爸媽沒有情勒妳，但你有點累了", 1, 20);
     events[6]->setResultOne2(2*n, 0, -2*n, -n, n, 0, "書沒讀好還這樣，哎，到底了，妳父母這樣覺得...");
@@ -321,7 +321,7 @@ void EventSystem::setEvents(){
     //event28
     events.push_back(new Events(
         "你刮刮樂中1000萬了，好事連連，你會...?",
-        "1. 都有1000萬了可個屁試，先爽一年再說/2. 好好運用獎金，拿去給父母投資股票/3. 到文昌廟投10萬香油錢"
+        "1. 都有1000萬了考個屁試，先爽一年再說/2. 好好運用獎金，拿去給父母投資股票/3. 到文昌廟投10萬香油錢"
     ));
     events[27]->setResultOne1(20*n,0,0,0,10*n,-n,"投資賺了一波大的，請頂級家教幫你補成績",6,100);
     events[27]->setResultOne2(5*n,0,0,0,0,-n,"花了大錢但效果不彰，只學到一點東西");
@@ -620,7 +620,7 @@ void EventSystem::setCharacEvents(){
         "1. 拿出手帕給她擦汗/2. 等她喘完再聽他要說什麼/3. 妳瀟灑底地冷笑一聲，跑去飲水機裝水"
     ));
     characEvents[31]->setResultOne2(0,0,2*n,0,0,0,"陳愛芬很感謝妳，並故作姿態地在手帕上聞了聞，妳感到有點不好意思，好感度+5，魅力+10");
-    characEvents[31]->setResultTwo2(0,2*n,0,0,0,0,"陳愛芬和妳分享了很多有趣得八卦見聞，好感度+4，人緣 + 10");
+    characEvents[31]->setResultTwo2(0,2*n,0,0,0,0,"陳愛芬和妳分享了很多有趣的八卦見聞，好感度+4，人緣 + 10");
     characEvents[31]->setResultThree2(0,0,0,2*n,0,0,"陳愛芬滿頭問號，但妳喝了很多水變健康了，好感度-5，體能+10");
 
     characEvents.push_back(new CharacterEvents(0, 5, 0,

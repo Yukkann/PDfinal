@@ -31,7 +31,8 @@ public:
     int getMove() const;
     int getLucky() const;
     bool getSick() const;
-
+    void displayPlayer();
+    void print();
     void checkSick();
 };
 #endif // PLAYER_CLASS_H_INCLUDED

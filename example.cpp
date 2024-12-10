@@ -147,9 +147,7 @@ public:
         // 若兩者滿100
         // 三者都滿100
         // 都未達標
-        bool successfulGuy = false;
-        if(score >= 3000)
-            successfulGuy = true;
+        bool successfulGuy = player.successfullGuy(score);
         //BE
         if(characters[0].getAffection() < 100 && characters[1].getAffection() < 100 && characters[2].getAffection() < 100)
         {
@@ -311,9 +309,9 @@ public:
         // 檢查是否達到結局條件
         // 先考試
         int score;
-        if(player.getAcademic() >= 300)
+        if(player.getAcademic() >= 400)
             score = collegeTest("easy");
-        else if (player.getAcademic() < 300 && player.getAcademic() >= 200)
+        else if (player.getAcademic() < 400 && player.getAcademic() >= 300)
             score = collegeTest("moderate");
         else score = collegeTest("hard");
         tp.setSpeed(100);
@@ -400,17 +398,21 @@ public:
         return score;
     }
     void run() {
+        int index1 = 0; // 陳愛芬的主線章節進度
+        int index2 = 0; // 黃梓祺的主線章節進度
+        int index3 = 0; // 王語崴的主線章節進度
+        cin.ignore();
         while(true) {
             displayStatus(); // 展示能操作的選項
             string inputCommand; // 玩家指令
             bool eventHappen = false;
             bool charEventHappen = false;
             int currentMove = player.getMove(); //現在剩餘行動點等於這個玩家最高行動點上限
-            int index1 = 0; // 陳愛芬的主線章節進度
-            int index2 = 0; // 黃梓祺的主線章節進度
-            int index3 = 0; // 王語崴的主線章節進度
+
             innerloop:
             while(currentMove > 0){ // 當還有行動值就會一直繼續
+                player.displayPlayer();
+                player.print();
                 player.checkSick(); // 確認是否生病
                 if(player.getSick())
                     tp.type("好像感冒了......要不休息一陣子？ 或吃點好吃的？\n");
@@ -419,114 +421,122 @@ public:
                 int commandCode = processCommand(inputCommand);
 
                 if(commandCode == 1){ // study
-                    if(currentMove < 6){
+                    if(currentMove <10){
                         tp.type("你的行動值不夠！\n");
                         goto innerloop; // 回到開始選項的地方
                     }
                     else{
-                        currentMove -= 6;
+                        currentMove -= 10;
                         //觸發學習事件//
                         if(player.getSick()){
                             player.modifyStats(6, -8, 2, 20, -10, 0);
                             tp.type("妳病懨懨的念書，效果似乎不是很好\n");
-                            cout << "妳的能力值增減為： " << "學科能力" << 6 << "，" << "人緣" << -8 << "，" << "魅力" << 2 << "，" << "疲勞值" << 20 << "，" << "體能" << -10 << "，" << "幸運" << 0 << "。" << endl;
+                            cout << "妳的能力值增減為： " << "學科能力+" << 6 << "，" << "人緣" << -8 << "，" << "魅力+" << 2 << "，" << "疲勞值+" << 20 << "，" << "體能" << -10 << "，" << "幸運+" << 0 << "。" << endl;
                         }
                         else{
                             player.modifyStats(12, -4, 4, 10, -5, 0);
                             tp.type("妳努力卷了一波\n");
-                            cout << "妳的能力值增減為： " << "學科能力" << 12 << "，" << "人緣" << -4 << "，" << "魅力" << 4 << "，" << "疲勞值" << 10 << "，" << "體能" << -5 << "，" << "幸運" << 0 << "。" << endl;
+                            cout << "妳的能力值增減為： " << "學科能力+" << 12 << "，" << "人緣" << -4 << "，" << "魅力+" << 4 << "，" << "疲勞值+" << 10 << "，" << "體能" << -5 << "，" << "幸運+" << 0 << "。" << endl;
                         }
+                        player.displayPlayer();
                         tp.type("剩餘行動值：");
                         cout << currentMove << "\n";
                     }
                 }
                 else if(commandCode == 2){ // exercise
-                    if(currentMove < 6){
+                    if(currentMove < 10){
                         tp.type("你的行動值不夠！\n");
                         goto innerloop; // 回到開始選項的地方
                     }
                     else{
-                        currentMove -= 6;
+                        currentMove -= 10;
                         //觸發運動事件//
                         if(player.getSick()){
                             tp.type("妳邊流著鼻涕邊流汗運動，病情似乎加重了\n");
                             player.modifyStats(0, 2, 2, 24, 8, 0);
-                            cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 2 << "，" << "魅力" << 2 << "，" << "疲勞值" << 24 << "，" << "體能" << 8 << "，" << "幸運" << 0 << "。" << endl;
+                            cout << "妳的能力值增減為： " << "學科能力+" << 0 << "，" << "人緣+" << 2 << "，" << "魅力+" << 2 << "，" << "疲勞值+" << 24 << "，" << "體能+" << 8 << "，" << "幸運+" << 0 << "。" << endl;
                         }
                         else{
                             tp.type("妳快樂打球，交到了很多球友\n");
                             player.modifyStats(0, 5, 5, 12, 15, 0);
-                            cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 5 << "，" << "魅力" << 5 << "，" << "疲勞值" << 12 << "，" << "體能" << 15 << "，" << "幸運" << 0 << "。" << endl;
+                            cout << "妳的能力值增減為： " << "學科能力+" << 0 << "，" << "人緣+" << 5 << "，" << "魅力+" << 5 << "，" << "疲勞值+" << 12 << "，" << "體能+" << 15 << "，" << "幸運+" << 0 << "。" << endl;
                         }
-                        
+                        player.displayPlayer();
                         tp.type("剩餘行動值：");
                         cout << currentMove << "\n";
                     }
                 }
                 else if(commandCode == 3){ // social
-                    if(currentMove < 6){
+                    if(currentMove < 10){
                         tp.type("你的行動值不夠！");
                         goto innerloop; // 回到開始選項的地方
                     }
                     else{
-                        currentMove -= 6;
+                        currentMove -= 10;
                         //觸發社交事件//
                         if(player.getSick()){
                             tp.type("妳戴著口罩，別人都聽不清楚妳在說什麼\n");
                             player.modifyStats(-8, 4, 7, 8, 0, 0);
-                            cout << "妳的能力值增減為： " << "學科能力" << -8 << "，" << "人緣" << 4 << "，" << "魅力" << 7 << "，" << "疲勞值" << 8 << "，" << "體能" << 0 << "，" << "幸運" << 0 << "。" << endl;
+                            cout << "妳的能力值增減為： " << "學科能力" << -8 << "，" << "人緣+" << 4 << "，" << "魅力+" << 7 << "，" << "疲勞值+" << 8 << "，" << "體能+" << 0 << "，" << "幸運+" << 0 << "。" << endl;
                         }
                         else{
                             tp.type("成功地和別人找到共通話題，聊得不亦樂乎\n");
                             player.modifyStats(-4, 8, 14, 4, 0, 0);
-                            cout << "妳的能力值增減為： " << "學科能力" << -4 << "，" << "人緣" << 8 << "，" << "魅力" << 14 << "，" << "疲勞值" << 4 << "，" << "體能" << 0 << "，" << "幸運" << 0 << "。" << endl;
+                            cout << "妳的能力值增減為： " << "學科能力" << -4 << "，" << "人緣+" << 8 << "，" << "魅力+" << 14 << "，" << "疲勞值+" << 4 << "，" << "體能+" << 0 << "，" << "幸運+" << 0 << "。" << endl;
                         }
-                        
+                        player.displayPlayer();
                         tp.type("剩餘行動值：");
                         cout << currentMove << "\n";
                     }
                 }
                 else if(commandCode == 4){ // eat
-                    if(currentMove < 4){
+                    if(currentMove < 5){
                         tp.type("你的行動值不夠！");
                         goto innerloop; // 回到開始選項的地方
                     }
                     else{
-                        currentMove -= 4;
+                        currentMove -= 5;
                         //觸發吃飯事件//
                         if(player.getSick()){
                             tp.type("生病導致喉嚨很痛，吃不太下飯\n");
                             player.modifyStats(0, 0, 4, -4, -10, 0);
-                            cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 0 << "，" << "魅力" << 4 << "，" << "疲勞值" << -4 << "，" << "體能" << -10 << "，" << "幸運" << 0 << "。" << endl;
+                            cout << "妳的能力值增減為： " << "學科能力+" << 0 << "，" << "人緣+" << 0 << "，" << "魅力+" << 4 << "，" << "疲勞值" << -4 << "，" << "體能" << -10 << "，" << "幸運+" << 0 << "。" << endl;
                         }
                         else{
                             tp.type("Yum Yum Yum Yum 真好吃~");
                             player.modifyStats(0, 0, 2, -8, -5, 0);
-                            cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 0 << "，" << "魅力" << 2 << "，" << "疲勞值" << -8 << "，" << "體能" << -5 << "，" << "幸運" << 0 << "。" << endl;
+                            cout << "妳的能力值增減為： " << "學科能力+" << 0 << "，" << "人緣+" << 0 << "，" << "魅力+" << 2 << "，" << "疲勞值" << -8 << "，" << "體能" << -5 << "，" << "幸運+" << 0 << "。" << endl;
                         }
-                        
+                        player.displayPlayer();
                         tp.type("剩餘行動值：");
                         cout << currentMove << "\n";
                     }
                 }
                 else if(commandCode == 5){//pray
                     //觸發拜拜事件//
-                    currentMove -= 6;
-                    tp.type("請阿彌陀佛、阿拉、真主、耶穌、聖母、恆河及偉大的祖靈保佑我 \n");
-                    if(player.getSick())
-                    {
-                        tp.type("妳有點生病了、土地公請妳好好保重身體\n");
-                        player.modifyStats(0, 0, 0, 0, 0, 7);
-                        cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 0 << "，" << "魅力" << 0 << "，" << "疲勞值" << 0 << "，" << "體能" << 0 << "，" << "幸運" << 7 << "。" << endl;
+                    if(currentMove < 10){
+                        tp.type("你的行動值不夠！\n");
+                        goto innerloop; // 回到開始選項的地方
                     }
-                    else 
-                    {
-                        tp.type("上帝會心一笑、讚嘆妳的虔誠\n");
-                        player.modifyStats(0, 0, 0, 0, 0, 14);
-                        cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 0 << "，" << "魅力" << 0 << "，" << "疲勞值" << 0 << "，" << "體能" << 0 << "，" << "幸運" << 14 << "。" << endl;
+                    else{
+                        currentMove -= 10;
+                        tp.type("請阿彌陀佛、阿拉、真主、耶穌、聖母、恆河及偉大的祖靈保佑我 \n");
+                        if(player.getSick())
+                        {
+                            tp.type("妳有點生病了、土地公請妳好好保重身體\n");
+                            player.modifyStats(0, 0, 0, 0, 0, 7);
+                            cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 0 << "，" << "魅力" << 0 << "，" << "疲勞值" << 0 << "，" << "體能" << 0 << "，" << "幸運" << 7 << "。" << endl;
+                        }
+                        else 
+                        {
+                            tp.type("上帝會心一笑、讚嘆妳的虔誠\n");
+                            player.modifyStats(0, 0, 0, 0, 0, 14);
+                            cout << "妳的能力值增減為： " << "學科能力+" << 0 << "，" << "人緣+" << 0 << "，" << "魅力+" << 0 << "，" << "疲勞值+" << 0 << "，" << "體能+" << 0 << "，" << "幸運+" << 14 << "。" << endl;
+                        }
+                        player.displayPlayer();
+                        tp.type("剩餘行動值：");
+                        cout << currentMove << "\n";
                     }
-                    tp.type("剩餘行動值：");
-                    cout << currentMove << "\n";
                 }
                 else if(commandCode == 6){ // sleep
                     //觸發睡覺事件//
@@ -541,6 +551,7 @@ public:
                     }
 
                     currentMove = 0;
+                    player.displayPlayer();
                     tp.type("剩餘行動值：");
                     cout << currentMove << "\n";
                 }
@@ -618,7 +629,8 @@ public:
             if(currentWeek == 30){
                 checkEnding();
                 break;
-        }
+            }
+            
     }
     exit_loop:;
 }
@@ -635,13 +647,6 @@ public:
         else if (player.getFatigue() > 100){
             tp.type("破防了");
         }
-        // 現在能力 可以選的選項 1. 
-        tp.setSpeed(30);
-        tp.type("           <目前狀態>          \n");
-        cout <<"學科值： "<<player.getAcademic() << " 體能： " << player.getStamina() << " 人緣: " << player.getPopularity() << " 魅力: " << player.getCharm() << " 幸運: " << player.getLucky() << " 疲勞值: " << player.getFatigue()<< " 行動點數上限: "<< player.getMove() << "\n";
-        tp.type("你可以選擇做這些事情：");
-        tp.type("1.study(消耗6點行動值), 2.exercise(消耗6點行動值), 3.social(消耗6點行動值), 4.eat(消耗4點行動值，減少一點點疲勞), 5.pray (消耗六點行動值，可增加幸運值，洗除妳的罪孽), 6.sleep(清空所有行動值，減少疲勞值)\n");
-        
     }
 
     int processCommand(const string& inputCommand)
