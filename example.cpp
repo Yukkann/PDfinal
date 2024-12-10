@@ -518,7 +518,7 @@ public:
                             player.modifyStats(0, 5, 5, 12, 15, 0);
                             cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 5 << "，" << "魅力" << 5 << "，" << "疲勞值" << 12 << "，" << "體能" << 15 << "，" << "幸運" << 0 << "。" << endl;
                         }
-                        
+
                         tp.type("剩餘行動值：");
                         cout << currentMove << "\n";
                     }
@@ -541,7 +541,7 @@ public:
                             player.modifyStats(-4, 8, 14, 4, 0, 0);
                             cout << "妳的能力值增減為： " << "學科能力" << -4 << "，" << "人緣" << 8 << "，" << "魅力" << 14 << "，" << "疲勞值" << 4 << "，" << "體能" << 0 << "，" << "幸運" << 0 << "。" << endl;
                         }
-                        
+
                         tp.type("剩餘行動值：");
                         cout << currentMove << "\n";
                     }
@@ -554,7 +554,7 @@ public:
                     else{
                         currentMove -= 4;
                         //觸發吃飯事件//
-                        if(player.getSick()){
+                        if(player.getsick()){
                             tp.type("生病導致喉嚨很痛，吃不太下飯\n");
                             player.modifyStats(0, 0, 4, -4, -10, 0);
                             cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 0 << "，" << "魅力" << 4 << "，" << "疲勞值" << -4 << "，" << "體能" << -10 << "，" << "幸運" << 0 << "。" << endl;
@@ -564,12 +564,30 @@ public:
                             player.modifyStats(0, 0, 2, -8, -5, 0);
                             cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 0 << "，" << "魅力" << 2 << "，" << "疲勞值" << -8 << "，" << "體能" << -5 << "，" << "幸運" << 0 << "。" << endl;
                         }
-                        
+
                         tp.type("剩餘行動值：");
                         cout << currentMove << "\n";
                     }
                 }
-                else if(commandCode == 5){ // sleep
+                else if(commandCode == 5)//pray
+                {
+                    tp.type("請阿彌陀佛、阿拉、真主、耶穌、聖母、恆河及偉大的祖靈保佑我 \n");
+                    if(player.getsick())
+                    {
+                        tp.type("妳有點生病了、土地公請妳好好保重身體\n");
+                        player.modifyStats(0, 0, 0, 0, 0, 7);
+                        cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 0 << "，" << "魅力" << 0 << "，" << "疲勞值" << 0 << "，" << "體能" << 0 << "，" << "幸運" << 7 << "。" << endl;
+                    }
+                    else 
+                    {
+                        tp.type("上帝會心一笑、讚嘆妳的虔誠\n");
+                        player.modifyStats(0, 0, 0, 0, 0, 14);
+                        cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 0 << "，" << "魅力" << 0 << "，" << "疲勞值" << 0 << "，" << "體能" << 0 << "，" << "幸運" << 14 << "。" << endl;
+                    }
+                    tp.type("剩餘行動值：");
+                    cout << currentMove << "\n";
+                }
+                else if(commandCode == 6){ // sleep
                     //觸發睡覺事件//
                     tp.type("睡覺皇帝大，睡覺就是好\n");
                     if(currentMove >= player.getFatigue()){
@@ -580,12 +598,13 @@ public:
                         player.modifyStats(0, 0, 0, -currentMove * 2, 0, 0);
                         cout << "疲勞值減少了" << currentMove * 2;
                     }
-                        
+
                     currentMove = 0;
                     tp.type("剩餘行動值：");
                     cout << currentMove << "\n";
                 }
-                else if(commandCode == 6){
+                
+                else if(commandCode == 7){
                     goto exit_loop; // 切到雙層迴圈外 結束遊戲
                 }
                 else{
@@ -610,17 +629,17 @@ public:
                     tp.type("觸發角色事件！\n");
                     uniform_int_distribution<int> number_dis(0, 2); //0 1 2 三個角色選一個觸發
                     // 跑出事件
-                    if(number_dis(gen) == 0 && index3 != 10){ // 王語崴
-                        characters[2].addAffection(eventsystem.characEvents[index3]->charMakeChoices(player));
+                    if(number_dis(gen) == 0 && index3 != 12){ // 王語崴
+                        characters[3].addAffection(eventsystem.characEvents[index3]->charMakeChoices(player));
                         index3++;
-                        
+
                     }
-                    else if(number_dis(gen) == 1 && index1 != 8){ // 陳愛芬
-                        characters[0].addAffection(eventsystem.characEvents[index1 + 10]->charMakeChoices(player));
+                    else if(number_dis(gen) == 1 && index1 != 9){ // 陳愛芬
+                        characters[0].addAffection(eventsystem.characEvents[index1 + 11]->charMakeChoices(player));
                         index1++;
                     }
-                    else if(number_dis(gen) == 2 && index2 != 10){ // 黃梓祺
-                        characters[1].addAffection(eventsystem.characEvents[index2 + 18]->charMakeChoices(player));
+                    else if(number_dis(gen) == 1 && index2 != 11){ // 黃梓祺
+                        characters[1].addAffection(eventsystem.characEvents[index2 + 19]->charMakeChoices(player));
                         index2++;
                     }
 
