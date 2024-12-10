@@ -624,8 +624,8 @@ public:
                         uniform_int_distribution<int> number_dis(0, 29); //編號0~29的事件
                         // 跑出事件
                         eventsystem.events[number_dis(gen)]->makeChoices(player, currentWeek);
+                        eventHappen = true;
                     }
-                    eventHappen = true;
                 }
 
                 if (!charEventHappen){
@@ -647,6 +647,7 @@ public:
                             characters[1].addAffection(eventsystem.characEvents[index2 + 19]->charMakeChoices(player));
                             index2++;
                         }
+                        charEventHappen = true;
                     }
                 }
                 
