@@ -602,36 +602,64 @@ public:
         }
         return score;
     }
-    void run(vector<TimeTriggerEvents*>& timeEvents, vector<LevelTriggerEvents*>& levelEvents, vector<Events*>& randomEvents) {
+    void run() {
         while(true) {
             string inputCommand; // 玩家指令
             displayStatus(); // 展示能操作的選項
             int currentMove = player.getMove(); //現在剩餘行動點等於這個玩家最高行動點上限
-            while(currentMove > 0){
-                getline(cin, inputCommand);
+            int index1 = 0; // 陳愛芬的主線章節進度
+            int index2 = 0; // 黃梓祺的主線章節進度
+            int index3 = 0; // 王語崴的主線章節進度
+            while(currentMove > 0){ // 當還有行動值就會一直繼續
+                innerloop:
+                player.checkSick(); // 確認是否生病
+                if(player.getSick())
+                    tp.type("好像感冒了......要不休息一陣子？ 或吃點好吃的？\n");
 
+                getline(cin, inputCommand); // 輸入指令
                 int commandCode = processCommand(inputCommand);
 
                 if(commandCode == 1){ // study
                     if(currentMove < 6){
-                        tp.type("你的行動值不夠！");
+                        tp.type("你的行動值不夠！\n");
+                        goto innerloop; // 回到開始選項的地方
                     }
                     else{
                         currentMove -= 6;
                         //觸發學習事件//
-                        player.modifyStats(12, -4, 4, 10, -5);
+                        if(player.getSick()){
+                            player.modifyStats(6, -8, 2, 20, -10, 0);
+                            tp.type("妳病懨懨的念書，效果似乎不是很好\n");
+                            cout << "妳的能力值增減為： " << "學科能力" << 6 << "，" << "人緣" << -8 << "，" << "魅力" << 2 << "，" << "疲勞值" << 20 << "，" << "體能" << -10 << "，" << "幸運" << 0 << "。" << endl;
+                        }
+                        else{
+                            player.modifyStats(12, -4, 4, 10, -5, 0);
+                            tp.type("妳努力卷了一波\n");
+                            cout << "妳的能力值增減為： " << "學科能力" << 12 << "，" << "人緣" << -4 << "，" << "魅力" << 4 << "，" << "疲勞值" << 10 << "，" << "體能" << -5 << "，" << "幸運" << 0 << "。" << endl;
+                        }
                         tp.type("剩餘行動值：");
                         cout << currentMove << "\n";
                     }
                 }
                 else if(commandCode == 2){ // exercise
                     if(currentMove < 6){
-                        tp.type("你的行動值不夠！");
+                        tp.type("你的行動值不夠！\n");
+                        goto innerloop; // 回到開始選項的地方
                     }
                     else{
                         currentMove -= 6;
                         //觸發運動事件//
-                        player.modifyStats(0, 5, 5, 12, 15);
+                        if(player.getSick()){
+                            tp.type("妳邊流著鼻涕邊流汗運動，病情似乎加重了\n");
+                            player.modifyStats(0, 2, 2, 24, 8, 0);
+                            cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 2 << "，" << "魅力" << 2 << "，" << "疲勞值" << 24 << "，" << "體能" << 8 << "，" << "幸運" << 0 << "。" << endl;
+                        }
+                        else{
+                            tp.type("妳快樂打球，交到了很多球友\n");
+                            player.modifyStats(0, 5, 5, 12, 15, 0);
+                            cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 5 << "，" << "魅力" << 5 << "，" << "疲勞值" << 12 << "，" << "體能" << 15 << "，" << "幸運" << 0 << "。" << endl;
+                        }
+
                         tp.type("剩餘行動值：");
                         cout << currentMove << "\n";
                     }
@@ -639,11 +667,22 @@ public:
                 else if(commandCode == 3){ // social
                     if(currentMove < 6){
                         tp.type("你的行動值不夠！");
+                        goto innerloop; // 回到開始選項的地方
                     }
                     else{
                         currentMove -= 6;
                         //觸發社交事件//
-                        player.modifyStats(-4, 8, 14, 4, 0);
+                        if(player.getSick()){
+                            tp.type("妳戴著口罩，別人都聽不清楚妳在說什麼\n");
+                            player.modifyStats(-8, 4, 7, 8, 0, 0);
+                            cout << "妳的能力值增減為： " << "學科能力" << -8 << "，" << "人緣" << 4 << "，" << "魅力" << 7 << "，" << "疲勞值" << 8 << "，" << "體能" << 0 << "，" << "幸運" << 0 << "。" << endl;
+                        }
+                        else{
+                            tp.type("成功地和別人找到共通話題，聊得不亦樂乎\n");
+                            player.modifyStats(-4, 8, 14, 4, 0, 0);
+                            cout << "妳的能力值增減為： " << "學科能力" << -4 << "，" << "人緣" << 8 << "，" << "魅力" << 14 << "，" << "疲勞值" << 4 << "，" << "體能" << 0 << "，" << "幸運" << 0 << "。" << endl;
+                        }
+
                         tp.type("剩餘行動值：");
                         cout << currentMove << "\n";
                     }
@@ -651,44 +690,112 @@ public:
                 else if(commandCode == 4){ // eat
                     if(currentMove < 4){
                         tp.type("你的行動值不夠！");
+                        goto innerloop; // 回到開始選項的地方
                     }
                     else{
                         currentMove -= 4;
                         //觸發吃飯事件//
-                        player.modifyStats(0, 0, 2, -8, -5);
+                        if(player.getsick()){
+                            tp.type("生病導致喉嚨很痛，吃不太下飯\n");
+                            player.modifyStats(0, 0, 4, -4, -10, 0);
+                            cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 0 << "，" << "魅力" << 4 << "，" << "疲勞值" << -4 << "，" << "體能" << -10 << "，" << "幸運" << 0 << "。" << endl;
+                        }
+                        else{
+                            tp.type("Yum Yum Yum Yum 真好吃~");
+                            player.modifyStats(0, 0, 2, -8, -5, 0);
+                            cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 0 << "，" << "魅力" << 2 << "，" << "疲勞值" << -8 << "，" << "體能" << -5 << "，" << "幸運" << 0 << "。" << endl;
+                        }
+
                         tp.type("剩餘行動值：");
                         cout << currentMove << "\n";
                     }
                 }
-                else if(commandCode == 5){ // sleep
+                else if(commandCode == 5)//pray
+                {
+                    tp.type("請阿彌陀佛、阿拉、真主、耶穌、聖母、恆河及偉大的祖靈保佑我 \n");
+                    if(player.getsick())
+                    {
+                        tp.type("妳有點生病了、土地公請妳好好保重身體\n");
+                        player.modifyStats(0, 0, 0, 0, 0, 7);
+                        cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 0 << "，" << "魅力" << 0 << "，" << "疲勞值" << 0 << "，" << "體能" << 0 << "，" << "幸運" << 7 << "。" << endl;
+                    }
+                    else 
+                    {
+                        tp.type("上帝會心一笑、讚嘆妳的虔誠\n");
+                        player.modifyStats(0, 0, 0, 0, 0, 14);
+                        cout << "妳的能力值增減為： " << "學科能力" << 0 << "，" << "人緣" << 0 << "，" << "魅力" << 0 << "，" << "疲勞值" << 0 << "，" << "體能" << 0 << "，" << "幸運" << 14 << "。" << endl;
+                    }
+                    tp.type("剩餘行動值：");
+                    cout << currentMove << "\n";
+                }
+                else if(commandCode == 6){ // sleep
                     //觸發睡覺事件//
-                    if(currentMove >= player.getFatigue())
-                        player.modifyStats(0, 0, 0, -player.getFatigue(), 0);
-                    else
-                        player.modifyStats(0, 0, 0, -currentMove, 0);
+                    tp.type("睡覺皇帝大，睡覺就是好\n");
+                    if(currentMove >= player.getFatigue()){
+                        player.modifyStats(0, 0, 0, -player.getFatigue(), 0, 0);
+                        cout << "疲勞值減少了" << player.getFatigue();
+                    }
+                    else{
+                        player.modifyStats(0, 0, 0, -currentMove * 2, 0, 0);
+                        cout << "疲勞值減少了" << currentMove * 2;
+                    }
+
                     currentMove = 0;
                     tp.type("剩餘行動值：");
                     cout << currentMove << "\n";
                 }
-                else if(commandCode == 6){
+                
+                else if(commandCode == 7){
                     goto exit_loop; // 切到雙層迴圈外 結束遊戲
                 }
                 else{
-                    tp.type("看清楚選項！請輸入一個數字後直接按下Enter");
+                    tp.type("看清楚選項！請輸入一個數字後直接按下Enter\n");
+                    goto innerloop; // 回到開始選項的地方
                 }
-                //processCommand(command);
-                //commandCode.clear();
+
+                random_device rd;  // 用來產生種子
+                mt19937 gen(rd()); // Mersenne Twister 生成器
+                // 建立均勻分布的隨機浮點數生成器 (0.0 到 1.0)
+                uniform_real_distribution<double> dis(0.0, 1.0);
+                // 生成隨機數並判斷是否中獎 (10% 機率)
+                if(dis(gen) < 0.04*player.getLucky()) {
+                    tp.type("觸發隨機事件！\n");
+                    uniform_int_distribution<int> number_dis(0, 29); //編號0~29的事件
+                    // 跑出事件
+                    eventsystem.events[number_dis(gen)]->makeChoices(player, currentWeek);
+                }
+                // 再抽一次看能不能有角色共通事件
+                uniform_real_distribution<double> dis(0.0, 1.0);
+                if(dis(gen) < 0.04*player.getLucky()) {
+                    tp.type("觸發角色事件！\n");
+                    uniform_int_distribution<int> number_dis(0, 2); //0 1 2 三個角色選一個觸發
+                    // 跑出事件
+                    if(number_dis(gen) == 0 && index3 != 12){ // 王語崴
+                        characters[3].addAffection(eventsystem.characEvents[index3]->charMakeChoices(player));
+                        index3++;
+
+                    }
+                    else if(number_dis(gen) == 1 && index1 != 9){ // 陳愛芬
+                        characters[0].addAffection(eventsystem.characEvents[index1 + 11]->charMakeChoices(player));
+                        index1++;
+                    }
+                    else if(number_dis(gen) == 1 && index2 != 11){ // 黃梓祺
+                        characters[1].addAffection(eventsystem.characEvents[index2 + 19]->charMakeChoices(player));
+                        index2++;
+                    }
 
                 }
-                currentDay ++;
-                if(currentDay == 30){
-                    checkEnding();
-                    break;
+                // 檢查天數是不是特別的一天
+                // 檢查角色好感度是否達標
             }
+            currentWeek ++;
+            if(currentWeek == 30){
+                checkEnding();
+                break;
         }
-        exit_loop:;
     }
-
+    exit_loop:;
+}
     void displayStatus() {
         // TypewriterEffect printer;
         cout << "=== Day " << currentDay << " ===\n";
