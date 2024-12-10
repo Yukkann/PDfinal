@@ -627,28 +627,29 @@ public:
                     }
                     eventHappen = true;
                 }
-                
-                // 再抽一次看能不能有角色共通事件
-                uniform_real_distribution<double> dis(0.0, 1.0);
-                if(dis(gen) < 0.04*player.getLucky()) {
-                    tp.type("觸發角色事件！\n");
-                    uniform_int_distribution<int> number_dis(0, 2); //0 1 2 三個角色選一個觸發
-                    // 跑出事件
-                    if(number_dis(gen) == 0 && index3 != 12){ // 王語崴
-                        characters[3].addAffection(eventsystem.characEvents[index3]->charMakeChoices(player));
-                        index3++;
 
+                if (!charEventHappen){
+                    // 再抽一次看能不能有角色共通事件
+                    uniform_real_distribution<double> dis(0.0, 1.0);
+                    if(dis(gen) < 0.04*player.getLucky()) {
+                        tp.type("觸發角色事件！\n");
+                        uniform_int_distribution<int> number_dis(0, 2); //0 1 2 三個角色選一個觸發
+                        // 跑出事件
+                        if(number_dis(gen) == 0 && index3 != 12){ // 王語崴
+                            characters[3].addAffection(eventsystem.characEvents[index3]->charMakeChoices(player));
+                            index3++;
+                        }
+                        else if(number_dis(gen) == 1 && index1 != 9){ // 陳愛芬
+                            characters[0].addAffection(eventsystem.characEvents[index1 + 11]->charMakeChoices(player));
+                            index1++;
+                        }
+                        else if(number_dis(gen) == 1 && index2 != 11){ // 黃梓祺
+                            characters[1].addAffection(eventsystem.characEvents[index2 + 19]->charMakeChoices(player));
+                            index2++;
+                        }
                     }
-                    else if(number_dis(gen) == 1 && index1 != 9){ // 陳愛芬
-                        characters[0].addAffection(eventsystem.characEvents[index1 + 11]->charMakeChoices(player));
-                        index1++;
-                    }
-                    else if(number_dis(gen) == 1 && index2 != 11){ // 黃梓祺
-                        characters[1].addAffection(eventsystem.characEvents[index2 + 19]->charMakeChoices(player));
-                        index2++;
-                    }
-
                 }
+                
                 // 檢查天數是不是特別的一天
                 // 檢查角色好感度是否達標
             }
