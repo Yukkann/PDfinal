@@ -619,7 +619,7 @@ public:
                         characters[0].addAffection(eventsystem.characEvents[index1 + 10]->charMakeChoices(player));
                         index1++;
                     }
-                    else if(number_dis(gen) == 1 && index2 != 10){ // 黃梓祺
+                    else if(number_dis(gen) == 2 && index2 != 10){ // 黃梓祺
                         characters[1].addAffection(eventsystem.characEvents[index2 + 18]->charMakeChoices(player));
                         index2++;
                     }
