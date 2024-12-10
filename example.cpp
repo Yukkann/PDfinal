@@ -83,7 +83,7 @@ public:
         cout << ">>遊戲簡介：一名學測剩30週的高中美少女，要在短短的30週內出奇蹟";
         pause();
         cout <<">>期間會遇到許多出其不意的事情，合理的運用時間才能獲得理想的目標！考上台大吧！\\(^w^)/ " << "\n";
-        showTXT("C:/Users/Jolie/Jolie's doc/C++/final/rule.txt");
+        showTXT("../final/rule.txt");
 
         while (true) {
             cout << "請輸入你的名字(使用英文或阿拉伯數字): ";
@@ -345,15 +345,15 @@ public:
             solution[1] = 2;
             solution[2] = 2;
             tp.type("第一題： \n (自然題)");
-            showTXT("final/easy_test1.txt");
+            showTXT("../final/easy_test1.txt");
             tp.type("請作答：");
             cin >> answer[0];
             tp.type("第二題： \n (國文題)");
-            showTXT("final/easy_test2.txt");
+            showTXT("../final/easy_test2.txt");
             tp.type("請作答：");
             cin >> answer[1];
             tp.type("第三題： \n (加分題)");
-            showTXT("final/easy_test3.txt");
+            showTXT("../final/easy_test3.txt");
             tp.type("請作答：");
             cin >> answer[2];
 
@@ -363,15 +363,15 @@ public:
             solution[1] = 3;
             solution[2] = 1;
             tp.type("第一題： \n (數學題)");
-            showTXT("final/hard_test1.txt");
+            showTXT("../final/hard_test1.txt");
             tp.type("請作答：");
             cin >> answer[0];
             tp.type("第二題： \n (常識題)");
-            showTXT("final/hard_test2.txt");
+            showTXT("../final/hard_test2.txt");
             tp.type("請作答：");
             cin >> answer[1];
             tp.type("第三題： \n (加分題)");
-            showTXT("final/hard_test3.txt");
+            showTXT("../final/hard_test3.txt");
             tp.type("請作答：");
             cin >> answer[2];
         }
@@ -380,15 +380,15 @@ public:
             solution[1] = 2;
             solution[2] = 3;
             tp.type("第一題： \n (社會題)");
-            showTXT("final/test1.txt");
+            showTXT("../final/test1.txt");
             tp.type("請作答：");
             cin >> answer[0];
             tp.type("第二題： \n (數學題)");
-            showTXT("final/test2.txt");
+            showTXT("../final/test2.txt");
             tp.type("請作答：");
             cin >> answer[1];
             tp.type("第三題： \n (加分題)");
-            showTXT("final/test3.txt");
+            showTXT("../final/test3.txt");
             tp.type("請作答：");
             cin >> answer[2];
         }
@@ -615,7 +615,7 @@ public:
                 }
             }
             currentWeek ++;
-            if(currentWeek == 2){
+            if(currentWeek == 30){
                 checkEnding();
                 break;
         }
