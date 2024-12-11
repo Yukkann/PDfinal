@@ -1,3 +1,5 @@
+#ifndef TYPEWRITER_CLASS_H_INCLUDED
+#define TYPEWRITER_CLASS_H_INCLUDED
 #include <iostream>
 #include <string>
 #include <chrono>
@@ -22,3 +24,4 @@ public:
     // 設置打字速度
     void setSpeed(int new_delay);
 };
+#endif

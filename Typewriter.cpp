@@ -45,14 +45,6 @@ void Typewriter::type(const std::string& text) {
     }
     // std::cout << std::endl;
 }
-
-// 打印多行文字
-void Typewriter::typeLines(const std::string text[], int size) {
-    for (int i = 0; i < size; i++) {
-        type(text[i]);
-    }
-}
-
 // 設置打字速度
 void Typewriter::setSpeed(int new_delay) {
     delay_ms = new_delay;
